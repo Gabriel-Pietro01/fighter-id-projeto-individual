@@ -1,0 +1,107 @@
+body {
+    font-family: "Outfit";
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1D1D1D;
+}
+
+/* MENU */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 100px;
+    background-color: #212121;
+    border-bottom: 1px solid #E63946;
+}
+
+nav img {
+    height: 110px;
+    width: 110px;
+}
+
+nav ul a {
+    color: #F1FAEE;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+nav ul a:hover {
+    color: #FFFFFF;
+    text-shadow: 0 0 2px #FFFFFF;
+}
+
+.menu-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu-center ul {
+    display: flex;
+    font-size: 20px;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-right ul {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-right button {
+    font-size: 20px;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #E63946;
+}
+
+.menu-right button:hover {
+    transition: all 0.3s ease;
+    color: #FFFFFF;
+    background-color: #F3722C;
+}
+
+.divider {
+    height: 50px;
+    width: 1px;
+    background-color: #E63946;
+}
+
+/* ----------------------- */
+
+.main-content {
+    height: 86vh;
+    width: 100%; 
+    background-image: url(../assets/gifs/ryu-ken-2.gif);
+    filter: blur();
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+}
