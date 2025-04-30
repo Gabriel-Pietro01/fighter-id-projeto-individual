@@ -144,10 +144,18 @@ nav ul a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    color: #F1FAEE;
+}
+
+.overlay span {
+    color: #FF8C00;
+    font-weight: bold;
 }
