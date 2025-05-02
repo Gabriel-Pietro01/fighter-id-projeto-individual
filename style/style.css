@@ -183,8 +183,113 @@ nav ul a:hover {
 
 .character-selected {
     width: 25%;
-    background-color: #F3722C;
     margin-left: 5%;
     flex-direction: column;
     text-align: center;
+}
+
+.character-name {
+    background-color: #0e0d0d;
+    border: 1px solid #353333;
+    border-radius: 10px;
+    width: 80%;
+    margin-top: 15%;
+    margin-left: 10%;
+}
+
+.character-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    border: 1px solid #353333;
+    border-radius: 10px;
+    height: 12%;
+    width: 90%;
+    margin-left: 5%;
+    gap: 10px
+}
+
+.character-status img{
+    height: 50px;
+    width: 50px;
+}
+
+.character {
+    margin-top: 15%;
+    margin-left: 22%;
+    height: 50%;
+    background-image: url(../assets/gifs/ryu-afk-1.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.characters-select-screen {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 15%;
+    margin-left: 5%;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 30%;
+    height: 15%;
+    background-color: #000000;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.character-selected-ryu {
+    height: 90%;
+    width: 20%;
+}
+
+.character-selected-ryu img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.character-selected-ken {
+    height: 90%;
+    width: 20%;
+}
+
+.character-selected-ken img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.character-selected-chunlee {
+    height: 90%;
+    width: 20%;
+}
+
+.character-selected-chunlee img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.character-selected-zangief {
+    height: 90%;
+    width: 20%;
+}
+
+.character-selected-zangief img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.character-selected-akuma {
+    height: 90%;
+    width: 20%;
+}
+
+.character-selected-akuma img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
 }
