@@ -239,7 +239,7 @@ nav ul a:hover {
     width: 30%;
     height: 15%;
     border-radius: 10px;
-    gap: 5px;
+    gap: 10px;
 }
 
 .character-selected-ryu {
@@ -255,6 +255,10 @@ nav ul a:hover {
     border-radius: 10px;
 }
 
+.character-selected-ryu img:hover {
+    border-color: #353333;
+}
+
 .character-selected-ken {
     height: 90%;
     width: 20%;
@@ -266,6 +270,10 @@ nav ul a:hover {
     cursor: pointer;
     border: 4px solid #000000;
     border-radius: 10px;
+}
+
+.character-selected-ken img:hover {
+    border-color: #353333;
 }
 
 .character-selected-chunlee {
@@ -281,6 +289,10 @@ nav ul a:hover {
     border-radius: 10px;
 }
 
+.character-selected-chunlee img:hover {
+    border-color: #353333;
+}
+
 .character-selected-zangief {
     height: 90%;
     width: 20%;
@@ -294,6 +306,10 @@ nav ul a:hover {
     border-radius: 10px;
 }
 
+.character-selected-zangief img:hover {
+    border-color: #353333;
+}
+
 .character-selected-akuma {
     height: 90%;
     width: 20%;
@@ -305,4 +321,22 @@ nav ul a:hover {
     cursor: pointer;
     border: 4px solid #000000;
     border-radius: 10px;
+}
+
+.character-selected-akuma img:hover {
+    border-color: #353333;
+}
+
+.character-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #0e0d0d;
+    border: 1px solid #353333;
+    border-radius: 10px;
+    height: 65%;
+    width: 20%;
+    margin-top: 9%;
+    margin-left: 10%;
 }
