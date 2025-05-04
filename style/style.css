@@ -340,3 +340,45 @@ nav ul a:hover {
     margin-top: 9%;
     margin-left: 10%;
 }
+/* ----------------------- */
+/* SOBRE HOME */
+
+.main-sobre {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    gap: 40px;
+    background-color: #141414;
+}
+
+.card-sobre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    width: 25%;
+    border-radius: 20px;
+    background-color: #0e0d0d;
+    border: 1px solid #353333;
+}
+
+.card-sobre img{
+    height: 50%;
+    width: 60%;
+}
+
+.card-sobre-barra {
+    height: 2px;
+    width: 90%;
+    background-color: #ffffff;
+}
+
+/* ----------------------- */
+/* FOOTER */
+footer {
+    height: 30vh;
+    background-color: #212121;
+    border-top: 1px solid #E63946;
+}
