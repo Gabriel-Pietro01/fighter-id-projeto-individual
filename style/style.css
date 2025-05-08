@@ -571,3 +571,42 @@ footer img {
     color: #E63946;
     text-decoration: underline;
 }
+/* ----------------------- */
+
+/* TELA LOGADO */
+.content-index-logado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.img-usuario-logado {
+    height: 25vh;
+    width: 25vh;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.index-logado-bar {
+    height: 2px;
+    width: 30%;
+    background-color: #F1FAEE;
+}
+
+.content-index-logado button {
+    margin-top: 25px;
+    height: 5vh;
+    width: 25%;
+    cursor: pointer;
+    font-family: "Outfit";
+    font-size: 22px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #E63946;
+    color: #F1FAEE;
+}
+
+/* ----------------------- */
