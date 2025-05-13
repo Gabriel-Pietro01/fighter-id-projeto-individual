@@ -464,7 +464,7 @@ footer img {
     gap: 40px;
 }
 
-.register-right input{
+.register-right input {
     margin-left: 2%;
     font-family: "Outfit";
     font-size: 16px;
@@ -475,7 +475,7 @@ footer img {
     border-style: none;
 }
 
-.register-right input:focus{
+.register-right input:focus {
     outline: none;
 }
 
@@ -571,6 +571,7 @@ footer img {
     color: #E63946;
     text-decoration: underline;
 }
+
 /* ----------------------- */
 
 /* TELA LOGADO */
@@ -587,7 +588,8 @@ footer img {
     height: 25vh;
     width: 25vh;
     border-radius: 50%;
-    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .index-logado-bar {

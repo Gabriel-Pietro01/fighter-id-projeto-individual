@@ -74,19 +74,20 @@
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.FOTO_USUARIO = json.fotoPerfil;
 
+                    alert('Login efetuado com sucesso');
+
                     setTimeout(function () {
-                        window.location = "index_logado.html";
+                        window.location = "./index_logado.html";
                     }, "1000"); // apenas para exibir o loading
 
                 });
 
             } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+                alert("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
