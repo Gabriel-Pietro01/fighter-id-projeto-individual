@@ -33,8 +33,8 @@ document.addEventListener('keydown', function (e) {
         pontuacaoAtual.innerHTML = pontuacao;
         comboMostrado.innerHTML = `${combo[comboAtual]}`;
         setTimeout(() => {
-            personagem.style.backgroundImage = `url(../../assets/gifs/akuma-afk-1.gif)`;
+            personagem.style.backgroundImage = `url(../assets/gifs/akuma-afk-1.gif)`;
         }, 1000) //deixa o gif de volta a forma dele padrão após 1 segundo
-        personagem.style.backgroundImage = `url(../../assets/gifs/combos/akuma/akuma-shouryuken-1.gif)`;
+        personagem.style.backgroundImage = `url(../assets/gifs/combos/akuma/akuma-shouryuken-1.gif)`;
     }
 })
