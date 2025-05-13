@@ -1,6 +1,6 @@
 // LISTA DE FUNDOS PARA MUDAR NO INDEX
-var listBackgrounds = ['../assets/gifs/ryu-ken-1.gif', '../assets/gifs/ryu-ken-2.gif', '../assets/gifs/ryu-akuma-1.gif',
-                    '../assets/gifs/chun-lee-1.gif'
+var listBackgrounds = ['assets/gifs/ryu-ken-1.gif', 'assets/gifs/ryu-ken-2.gif', 'assets/gifs/ryu-akuma-1.gif',
+                    'assets/gifs/chun-lee-1.gif'
 ]
 
 var background = document.querySelector('.main-content');

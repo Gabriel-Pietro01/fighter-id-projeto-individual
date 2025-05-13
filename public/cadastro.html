@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../assets/img/logo-2.png" type="image/x-icon">
-    <link rel="stylesheet" href="../style/style.css">
+    <script src="assets/scripts/sessao.js"></script>
+    <link rel="shortcut icon" href="assets/img/logo-2.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -15,37 +16,97 @@
 <body>
     <div class="register-content">
         <div class="register-left">
-            <a href="../public/index.html"><button><img src="../assets/img/icon-back-white-1.png" alt="icon-back"></button></a>
+            <a href="index.html"><button><img src="assets/img/icon-back-white-1.png"
+                        alt="icon-back"></button></a>
         </div>
-        
+
         <div class="register-right">
-            <img src="../assets/img/logo-2.png" alt="logo" class="logo-register">
+            <img src="assets/img/logo-2.png" alt="logo" class="logo-register">
 
             <div class="campo-registro" id="registro-com-imagem">
                 <div class="back-character-register" onclick="changeIconBack()"></div>
-                <div class="character-register"></div>
+                <div class="character-register" data-id="1"></div>
                 <div class="forward-character-register" onclick="changeIconForward()"></div>
                 <div class="barra-register"></div>
-                <input type="text" placeholder="Nome de Usuário">
+                <input id="input_nome" type="text" placeholder="Nome de Usuário">
             </div>
 
             <div class="campo-registro">
-                <input type="text" placeholder="Email">
+                <input id="input_email" type="text" placeholder="Email">
             </div>
 
             <div class="campo-registro">
-                <input type="text" placeholder="Senha">
+                <input id="input_senha" type="text" placeholder="Senha">
             </div>
 
             <div class="campo-registro">
-                <input type="text" placeholder="Confirmar Senha">
+                <input id="confirmacao_senha_input" type="text" placeholder="Confirmar Senha">
             </div>
 
             <div class="end-register">
-                <button><a href="">Cadastrar</a></button>
-                <p>Já possui conta ?<span><a href="../public/login.html">Ir para Login</a></span></p>
+                <button onclick="cadastrar()"><a>Cadastrar</a></button>
+                <p>Já possui conta ?<span><a href="login.html">Ir para Login</a></span></p>
             </div>
         </div>
     </div>
 </body>
-<script src="../assets/scripts/change-profile.js"></script>
+<script src="assets/scripts/change-profile.js"></script>
+<script>
+    function cadastrar() {
+        var nomeVar = input_nome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+        var fotoPerfil = document.querySelector('.character-register');
+
+        // VERIFICAÇÃO (TENTAR DEIXAR MAIS BONITO)
+        if (
+            nomeVar == '' ||
+            emailVar == '' ||
+            senhaVar == '' ||
+            confirmacaoSenhaVar == ''
+        ) {
+            alert('(Mensagem de erro para todos os campos em branco)');
+            return false;
+        } else if (confirmacaoSenhaVar != senhaVar) {
+            alert('Senhas diferentes!')
+            return false;
+        }
+
+        var fotoSelecionada = fotoPerfil.getAttribute('data-id');
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                fotoPerfilServer: fotoSelecionada
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+    }
+</script>
