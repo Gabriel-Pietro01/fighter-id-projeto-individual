@@ -13,5 +13,30 @@
 </head>
 
 <body id="background-gameplay">
-    
+<div class="select-character-background">
+    <div class="gameplay-select-character">
+        <div class="gameplay-content-character" id="bg_selected">
+            <div class="gameplay-character-selected" id="gif_selected"></div>
+        </div>
+        <div class="gameplay-characters">
+            <h2 id="char_name">Ryu</h2>
+            <div class="carousel-controls">
+                <button onclick="prevCharacter()"><</button>
+                <button onclick="nextCharacter()">></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="gameplay-background" id="background_preview">
+        <h3 id="bg_name">Cenário 1</h3>
+        <div class="carousel-controls">
+            <button onclick="prevBackground()"><</button>
+            <button onclick="nextBackground()">></button>
+        </div>
+    </div>
+
+    <button onclick="confirmarSelecao()">JOGAR</button>
+</div>
+
+
 </body>
