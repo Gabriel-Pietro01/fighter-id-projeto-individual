@@ -8,35 +8,37 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <title>Fighter ID!</title>
 </head>
 
 <body id="background-gameplay">
-<div class="select-character-background">
-    <div class="gameplay-select-character">
-        <div class="gameplay-content-character" id="bg_selected">
-            <div class="gameplay-character-selected" id="gif_selected"></div>
-        </div>
-        <div class="gameplay-characters">
-            <h2 id="char_name">Ryu</h2>
-            <div class="carousel-controls">
-                <button onclick="prevCharacter()"><</button>
-                <button onclick="nextCharacter()">></button>
+    <div class="select-character-background">
+        <div class="gameplay-select-character">
+            <div class="gameplay-content-character" id="bg_selected">
+                <div class="gameplay-character-selected" id="gif_selected"></div>
+            </div>
+            <div class="gameplay-characters">
+                <div class="carousel-controls">
+                    <div class="back-character-gameplay" onclick="prevCharacter()"></div>
+                    <h1 id="char_name">Ryu</h1>
+                    <div class="forward-character-gameplay" onclick="nextCharacter()"></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="gameplay-background" id="background_preview">
-        <h3 id="bg_name">Cenário 1</h3>
-        <div class="carousel-controls">
-            <button onclick="prevBackground()"><</button>
-            <button onclick="nextBackground()">></button>
+        <div class="gameplay-background">
+            <div class="carousel-controls">
+                <div class="back-character-gameplay" onclick="prevBackground()"></div>
+                <h2 id="bg_name">Cenário 1</h2>
+                <div class="forward-character-gameplay" onclick="nextBackground()"></div>
+            </div>
         </div>
+
+        <button class="play-button" onclick="confirmarSelecao()">JOGAR</button>
     </div>
-
-    <button onclick="confirmarSelecao()">JOGAR</button>
-</div>
-
-
 </body>
+<script src="assets/scripts/gameplay.js"></script>
