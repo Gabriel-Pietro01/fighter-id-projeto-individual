@@ -615,6 +615,10 @@ footer img {
 
 /* GAMEPLAY */
 #background-gameplay {
+    height: 100vh;
+    width: 100%;
+    font-family: 'Jersey 10';
+    letter-spacing: 2px;
     background-image: url(../assets/img/background-select-1.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -716,14 +720,6 @@ footer img {
     cursor: pointer;
 }
 
-.background-gameplay-change {
-    height: 20vh;
-    width: 50%;
-    background-image: url(../assets/gifs/background-gameplay/background-gameplay1.gif);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
 .play-button {
     display: flex;
     align-items: center;
@@ -744,4 +740,16 @@ footer img {
     transition: all 0.3s ease;
     scale: 1.1;
     background-color: #ff0000;
+}
+
+.overlay-temp {
+    display: none;
+    font-size: 70px;
+    height: 100vh;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
 }
