@@ -76,9 +76,11 @@ function nextBackground() {
 
 // COMEÇO GAMEPLAY
 
+var contentGameplay = document.querySelector('.content-gameplay');
 var overlayTemp = document.querySelector('.overlay-temp');
 var contagemTempDiv = document.getElementById('contagem-temp');
 var contagemTemp = 3;
+var char = document.getElementById('char-combo')
 
 function confirmarSelecao() {
     setTimeout(() => {
@@ -99,7 +101,12 @@ function confirmarSelecao() {
             clearInterval(intervalo);
 
             setTimeout(() => {
-                overlayTemp.style.display = 'none';
+                contagemTempDiv.remove();
+                overlayTemp.style.backgroundColor= 'transparent';
+                overlayTemp.style.opacity = 1;
+                contentGameplay.style.display = 'flex';
+                char.style.backgroundImage = `url(${listCharacters[current][1]})`;
+                
             }, 1000)
         }
     }, 1000);

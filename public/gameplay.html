@@ -41,7 +41,34 @@
         <button class="play-button" onclick="confirmarSelecao()">JOGAR</button>
     </div>
 
-    <div class="overlay-temp"><h1 id="contagem-temp">3</h1></div>
+    <div class="overlay-temp">
+        <h1 id="contagem-temp">3</h1>
+        <div class="content-gameplay">
+            <div class="div-timer">
+                <h4 id="timer">4.59</h4>
+            </div>
+            <div class="combo">
+                <span id="key-1">A</span>
+                +
+                <span id="key-2">A</span>
+                +
+                <span id="key-3">D</span>
+                +
+                <span id="key-4">L</span>
+            </div>
+
+            <div id="score">0<span id="sequencia-span">x0</span></div>
+
+            <div class="char-combo-div">
+                <div id="char-combo"></div>
+            </div>
+
+            <div class="special-bar">
+                <p>Pressione a Barra de Espaço</p>
+                <img src="assets/img/spacebar-icon.png" alt="">
+            </div>
+        </div>
+    </div>
 
 </body>
 <script src="assets/scripts/gameplay.js"></script>
