@@ -82,6 +82,21 @@ var contagemTempDiv = document.getElementById('contagem-temp');
 var contagemTemp = 3;
 var char = document.getElementById('char-combo')
 
+var key1Combo = document.getElementById('key-1');
+var key2Combo = document.getElementById('key-2');
+var key3Combo = document.getElementById('key-3');
+var key4Combo = document.getElementById('key-4');
+
+var combo = [];
+var divCombo = document.querySelector('.combo');
+var contKey = 0;
+
+var listKeybinds = [
+    'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+    'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z',
+    'X', 'C', 'V', 'B', 'N', 'M'
+]
+
 function confirmarSelecao() {
     setTimeout(() => {
         charScreen.style.display = 'none';
@@ -102,13 +117,63 @@ function confirmarSelecao() {
 
             setTimeout(() => {
                 contagemTempDiv.remove();
-                overlayTemp.style.backgroundColor= 'transparent';
+                overlayTemp.style.backgroundColor = 'transparent';
                 overlayTemp.style.opacity = 1;
                 contentGameplay.style.display = 'flex';
                 char.style.backgroundImage = `url(${listCharacters[current][1]})`;
-                
+
             }, 1000)
         }
     }, 1000);
 
+    começarJogo();
+}
+
+function começarJogo() {
+    montarCombo();
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key.toUpperCase() == combo[contKey]) {
+            if (contKey == 0) {
+                key1Combo.style.color = '#32CD32';
+            } else if (contKey == 1) {
+                key2Combo.style.color = '#32CD32';
+            } else if (contKey == 2) {
+                key3Combo.style.color = '#32CD32';
+            } else if (contKey == 3) {
+                key4Combo.style.color = '#32CD32';
+            }
+
+            contKey++;
+        } else {
+            key1Combo.style.color = '#FFFFFF';
+            key2Combo.style.color = '#FFFFFF';
+            key3Combo.style.color = '#FFFFFF';
+            key4Combo.style.color = '#FFFFFF';
+            contKey = 0;
+        }
+
+        if (contKey == 4) {
+            key1Combo.style.color = '#FFFFFF';
+            key2Combo.style.color = '#FFFFFF';
+            key3Combo.style.color = '#FFFFFF';
+            key4Combo.style.color = '#FFFFFF';
+            contKey = 0;
+            montarCombo();
+        }
+    })
+
+
+}
+
+function montarCombo() {
+    combo = [];
+
+    for (var i = 0; i < 4; i++) {
+        combo.push(listKeybinds[Math.floor(Math.random() * listKeybinds.length)]);
+    }
+    key1Combo.innerHTML = combo[0];
+    key2Combo.innerHTML = combo[1];
+    key3Combo.innerHTML = combo[2];
+    key4Combo.innerHTML = combo[3];
 }
