@@ -24,7 +24,7 @@ var backgroundName = document.getElementById('bg_name');
 var background = document.querySelector('.gameplay-select-character');
 var backgroundAll = document.getElementById('background-gameplay');
 
-var current = 0;
+var current = 0; //é o indice do personagem selecionado/atual
 var currentBackground = 0;
 
 function prevCharacter() {
@@ -97,6 +97,46 @@ var listKeybinds = [
     'X', 'C', 'V', 'B', 'N', 'M'
 ]
 
+var comboGifs = [
+    [
+        'assets/gifs/combos/ryu/ryu-hadouken-1.gif', 'assets/gifs/combos/ryu/ryu-kick-1.gif', 'assets/gifs/combos/ryu/ryu-kick-2.gif',
+        'assets/gifs/combos/ryu/ryu-punch-1.gif', 'assets/gifs/combos/ryu/ryu-punch-2.gif', 'assets/gifs/combos/ryu/ryu-punch-3.gif',
+        'assets/gifs/combos/ryu/ryu-shoryuken-1.gif', 'assets/gifs/combos/ryu/ryu-tatsumaki-1.gif', 'assets/gifs/combos/ryu/ryu-taunt.gif'
+    ],
+    [
+        'assets/gifs/combos/ken/ken-hadouken-1.gif', 'assets/gifs/combos/ken/ken-kick-1.gif', 'assets/gifs/combos/ken/ken-kick-2.gif',
+        'assets/gifs/combos/ken/ken-punch-1.gif', 'assets/gifs/combos/ken/ken-punch-2.gif',
+        'assets/gifs/combos/ken/ken-tatsumaki-1.gif', 'assets/gifs/combos/ken/ken-taunt.gif'
+    ],
+    [
+        'assets/gifs/combos/chun-li/chun-kick-1.gif',
+        'assets/gifs/combos/chun-li/chun-kick-2.gif',
+        'assets/gifs/combos/chun-li/chun-kick-5.gif'
+    ],
+    [
+        'assets/gifs/combos/zangief/zangief-grab-1.gif', 'assets/gifs/combos/zangief/zangief-lariat-1.gif', 'assets/gifs/combos/zangief/zangief-punch-1.gif',
+        'assets/gifs/combos/zangief/zangief-taunt.gif'
+    ],
+    [
+        'assets/gifs/combos/akuma/akuma-kick-1.gif', 'assets/gifs/combos/akuma/akuma-kick-2.gif',
+        'assets/gifs/combos/akuma/akuma-punch-1.gif', 'assets/gifs/combos/akuma/akuma-punch-2.gif', 'assets/gifs/combos/akuma/akuma-punch-3.gif',
+        'assets/gifs/combos/akuma/akuma-shouryuken-1.gif', 'assets/gifs/combos/akuma/akuma-tatsumaki-1.gif', 'assets/gifs/combos/akuma/akuma-taunt.gif'
+    ]
+];
+
+var missedGifs = ['assets/gifs/combos/ryu-miss.gif', 'assets/gifs/combos/ken-miss.gif', 'assets/gifs/combos/chun-miss.gif', 'assets/gifs/combos/zangief-miss.gif', 'assets/gifs/combos/akuma-miss.gif'];
+
+var score = 0;
+var scoreDiv = document.getElementById('score-span');
+var sequencia = 0;
+var sequenciaDiv = document.getElementById('sequencia-span');
+
+var maiorSequencia = 0;
+
+var timerDiv = document.getElementById('timer');
+var tempoRestante = 10.00;
+
+
 function confirmarSelecao() {
     setTimeout(() => {
         charScreen.style.display = 'none';
@@ -122,49 +162,87 @@ function confirmarSelecao() {
                 contentGameplay.style.display = 'flex';
                 char.style.backgroundImage = `url(${listCharacters[current][1]})`;
 
+                começarJogo();
+
             }, 1000)
         }
     }, 1000);
-
-    começarJogo();
 }
 
 function começarJogo() {
     montarCombo();
+    document.addEventListener('keydown', clicouTeclado);
 
-    document.addEventListener('keydown', function (e) {
-        if (e.key.toUpperCase() == combo[contKey]) {
-            if (contKey == 0) {
-                key1Combo.style.color = '#32CD32';
-            } else if (contKey == 1) {
-                key2Combo.style.color = '#32CD32';
-            } else if (contKey == 2) {
-                key3Combo.style.color = '#32CD32';
-            } else if (contKey == 3) {
-                key4Combo.style.color = '#32CD32';
+    var intervaloTempo = setInterval(() => {
+        tempoRestante -= 0.01;
+        timerDiv.style.color = 'white';
+
+        if (tempoRestante <= 0) {
+            tempoRestante = 0;
+            clearInterval(intervaloTempo);
+            document.removeEventListener('keydown', clicouTeclado);
+            mostrarModalFinal();
+        }
+
+        if (tempoRestante < 8) {
+            timerDiv.style.color = 'orange';
+
+            if (tempoRestante < 5) {
+                timerDiv.style.color = 'red';
             }
-
-            contKey++;
-        } else {
-            key1Combo.style.color = '#FFFFFF';
-            key2Combo.style.color = '#FFFFFF';
-            key3Combo.style.color = '#FFFFFF';
-            key4Combo.style.color = '#FFFFFF';
-            contKey = 0;
         }
-
-        if (contKey == 4) {
-            key1Combo.style.color = '#FFFFFF';
-            key2Combo.style.color = '#FFFFFF';
-            key3Combo.style.color = '#FFFFFF';
-            key4Combo.style.color = '#FFFFFF';
-            contKey = 0;
-            montarCombo();
-        }
-    })
-
+        timerDiv.innerText = tempoRestante.toFixed(2);
+    }, 10);
 
 }
+
+function clicouTeclado(e) {
+    if (e.key.toUpperCase() == combo[contKey]) {
+        if (contKey == 0) key1Combo.style.color = '#32CD32';
+        else if (contKey == 1) key2Combo.style.color = '#32CD32';
+        else if (contKey == 2) key3Combo.style.color = '#32CD32';
+        else if (contKey == 3) key4Combo.style.color = '#32CD32';
+
+        contKey++;
+    } else {
+        char.style.backgroundImage = `url(${missedGifs[current]})`;
+        key1Combo.style.color = '#FFFFFF';
+        key2Combo.style.color = '#FFFFFF';
+        key3Combo.style.color = '#FFFFFF';
+        key4Combo.style.color = '#FFFFFF';
+        contKey = 0;
+        sequencia = 0;
+        sequenciaDiv.style.color = 'white';
+        sequenciaDiv.style.animation = 'none';
+        sequenciaDiv.innerHTML = `x${sequencia}`;
+    }
+
+    if (contKey == 4) {
+        tempoRestante += 1.50;
+        sequencia++;
+        score += sequencia * 25;
+
+        if (sequencia > maiorSequencia) maiorSequencia = sequencia;
+
+        if (sequencia > 2) sequenciaDiv.style.color = 'yellow';
+        if (sequencia > 5) sequenciaDiv.style.color = 'red';
+        if (sequencia > 10) {
+            sequenciaDiv.style.color = 'orange';
+            sequenciaDiv.style.animation = 'changeColors 3s infinite';
+        }
+
+        scoreDiv.innerHTML = score;
+        sequenciaDiv.innerHTML = `x${sequencia}`;
+        key1Combo.style.color = '#FFFFFF';
+        key2Combo.style.color = '#FFFFFF';
+        key3Combo.style.color = '#FFFFFF';
+        key4Combo.style.color = '#FFFFFF';
+        contKey = 0;
+        char.style.backgroundImage = `url(${comboGifs[current][Math.floor(Math.random() * comboGifs[current].length)]})`;
+        montarCombo();
+    }
+}
+
 
 function montarCombo() {
     combo = [];
@@ -176,4 +254,21 @@ function montarCombo() {
     key2Combo.innerHTML = combo[1];
     key3Combo.innerHTML = combo[2];
     key4Combo.innerHTML = combo[3];
+}
+
+function mostrarModalFinal() {
+    var modal = document.getElementById('modal-fim');
+    modal.style.display = 'flex';
+
+    document.getElementById('pontuacao-final').innerText = score;
+    document.getElementById('sequencia-final').innerText = maiorSequencia;
+}
+
+
+function jogarNovamente() {
+    location.reload();
+}
+
+function voltarInicio() {
+    window.location.href = 'index_logado.html';
 }

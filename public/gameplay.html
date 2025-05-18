@@ -57,7 +57,7 @@
                 <span id="key-4">L</span>
             </div>
 
-            <div id="score">0<span id="sequencia-span">x0</span></div>
+            <div id="score"><span id="score-span">0</span><span id="sequencia-span">x0</span></div>
 
             <div class="char-combo-div">
                 <div id="char-combo"></div>
@@ -67,6 +67,16 @@
                 <p>Pressione a Barra de Espaço</p>
                 <img src="assets/img/spacebar-icon.png" alt="">
             </div>
+        </div>
+    </div>
+
+    <div id="modal-fim" style="display: none;" class="modal-fim">
+        <div class="modal-content">
+            <h1>Tempo Esgotado!</h1>
+            <p>Pontuação: <span id="pontuacao-final">0</span></p>
+            <p>Maior Sequência: <span id="sequencia-final">0</span></p>
+            <button onclick="jogarNovamente()">Jogar Novamente</button>
+            <button onclick="voltarInicio()">Voltar ao Início</button>
         </div>
     </div>
 
