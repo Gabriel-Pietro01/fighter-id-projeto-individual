@@ -126,6 +126,8 @@ var comboGifs = [
 
 var missedGifs = ['assets/gifs/combos/ryu-miss.gif', 'assets/gifs/combos/ken-miss.gif', 'assets/gifs/combos/chun-miss.gif', 'assets/gifs/combos/zangief-miss.gif', 'assets/gifs/combos/akuma-miss.gif'];
 
+var especialGifs = ['assets/gifs/especiais/ryu-hurricane.gif', 'assets/gifs/especiais/ken-especial.gif', 'assets/gifs/especiais/chun-especial.gif', '', 'assets/gifs/especiais/badass-akuma.gif'] //Colocar do zangief
+
 var score = 0;
 var scoreDiv = document.getElementById('score-span');
 var sequencia = 0;
@@ -138,6 +140,10 @@ var tempoRestante = 10.00;
 
 var acertos = 0;
 var erros = 0;
+
+var especialDiv = document.getElementById('special-bar');
+var pressioneEspacoDiv = document.getElementById('pressione-espaco');
+var especial = false;
 
 function confirmarSelecao() {
     setTimeout(() => {
@@ -199,7 +205,21 @@ function começarJogo() {
 }
 
 function clicouTeclado(e) {
-    if (e.key.toUpperCase() == combo[contKey]) {
+    if (especial) {
+        especialDiv.style.opacity = '1';
+        pressioneEspacoDiv.style.animation = 'changeColors 3s infinite'
+        // Trocar a cor do fundo para combinar
+
+        if (e.keyCode == 32) {
+            char.style.backgroundImage = `url(${especialGifs[current]})`;
+            tempoRestante += 5;
+            score += score * 2;
+
+            especial = false;
+        }
+    }
+
+    if (e.key.toUpperCase() == combo[contKey] && e.keyCode != 32) {
         if (contKey == 0) key1Combo.style.color = '#32CD32';
         else if (contKey == 1) key2Combo.style.color = '#32CD32';
         else if (contKey == 2) key3Combo.style.color = '#32CD32';
@@ -207,7 +227,9 @@ function clicouTeclado(e) {
 
         acertos++;
         contKey++;
-    } else {
+    } else if (e.keyCode != 32) {
+        especialDiv.style.opacity = '0.5';
+        pressioneEspacoDiv.style.animation = 'none'
         erros++;
         char.style.backgroundImage = `url(${missedGifs[current]})`;
         key1Combo.style.color = '#FFFFFF';
@@ -222,9 +244,13 @@ function clicouTeclado(e) {
     }
 
     if (contKey == 4) {
+        especialDiv.style.opacity = '0.5';
+        pressioneEspacoDiv.style.animation = 'none'
         tempoRestante += 1.50;
         sequencia++;
         score += sequencia * 25;
+
+        if (sequencia % 2 == 0) especial = true
 
         if (sequencia > maiorSequencia) maiorSequencia = sequencia;
 

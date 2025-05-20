@@ -53,3 +53,4 @@ INSERT INTO personagem VALUES
     
 -- SELECTS
 SELECT * FROM personagem;
+SELECT * FROM partidas JOIN usuario ON fkUsuario = id JOIN personagem ON fkPersonagem = idPersonagem;

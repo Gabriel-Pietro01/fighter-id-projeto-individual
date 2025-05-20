@@ -836,6 +836,7 @@ footer img {
     background-color: #000000;
     border: 1px solid #212121;
     border-radius: 10px;
+    z-index: 2;
 }
 
 #sequencia-span {
@@ -855,6 +856,7 @@ footer img {
     background-color: rgba(0, 0, 0, 0.7);
     border: 2px solid #000000;
     border-radius: 5px;
+    z-index: 3;
 }
 
 .combo span {
@@ -865,6 +867,7 @@ footer img {
 #score {
     display: flex;
     justify-content: center;
+    z-index: 4;
 }
 
 .char-combo-div {
@@ -875,6 +878,7 @@ footer img {
     left: 0;
     display: flex;
     justify-content: center;
+    z-index: 1;
 }
 
 #char-combo {
@@ -902,6 +906,7 @@ footer img {
     border: 2px solid #000000;
     border-radius: 20px;
     opacity: 0.5;
+    color: white;
 }
 
 .special-bar p {
