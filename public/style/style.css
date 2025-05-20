@@ -611,6 +611,20 @@ footer img {
     color: #F1FAEE;
 }
 
+.content-index-logado button:hover {
+    transition: all 0.3s ease;
+    scale: 1.1;
+    background-color: #ff0000;
+}
+
+#lobby {
+    background-image: url(../assets/gifs/background-lobby.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(1px);
+}
+
 /* ----------------------- */
 
 /* GAMEPLAY */
