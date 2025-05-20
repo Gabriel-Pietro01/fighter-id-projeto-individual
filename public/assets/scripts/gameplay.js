@@ -136,6 +136,8 @@ var maiorSequencia = 0;
 var timerDiv = document.getElementById('timer');
 var tempoRestante = 10.00;
 
+var acertos = 0;
+var erros = 0;
 
 function confirmarSelecao() {
     setTimeout(() => {
@@ -203,8 +205,10 @@ function clicouTeclado(e) {
         else if (contKey == 2) key3Combo.style.color = '#32CD32';
         else if (contKey == 3) key4Combo.style.color = '#32CD32';
 
+        acertos++;
         contKey++;
     } else {
+        erros++;
         char.style.backgroundImage = `url(${missedGifs[current]})`;
         key1Combo.style.color = '#FFFFFF';
         key2Combo.style.color = '#FFFFFF';
@@ -262,6 +266,7 @@ function mostrarModalFinal() {
 
     document.getElementById('pontuacao-final').innerText = score;
     document.getElementById('sequencia-final').innerText = maiorSequencia;
+    adicionarPartida();
 }
 
 
@@ -271,4 +276,21 @@ function jogarNovamente() {
 
 function voltarInicio() {
     window.location.href = 'index_logado.html';
+}
+
+function adicionarPartida() {
+    fetch("/partidas/adicionarPartida", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            fkUsuarioServer: sessionStorage.getItem('ID_USUARIO'),
+            fkPersonagemServer: (current + 100),
+            pontuacaoTotalServer: score,
+            acertosServer: acertos,
+            errosServer: erros,
+            maiorSequenciaServer: maiorSequencia
+        }),
+    })
 }

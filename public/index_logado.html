@@ -13,25 +13,67 @@
     <title>Fighter ID!</title>
 </head>
 
-<body onload="validarSessao()" id="lobby"> 
-    <div class="content-index-logado">
-        <div id="img_usuario" class="img-usuario-logado"></div>
-        <div>
-            <h2 id="b_usuario"></h2>
+<body onload="validarSessao()" id="lobby">
+    <div class="overlay">
+        <div class="content-index-logado">
+            <div id="img_usuario" class="img-usuario-logado"></div>
+            <div>
+                <h2 id="b_usuario"></h2>
+            </div>
+            <div>
+                <h2>Maior Pontuação: <span>0</span></h2> <!--Fazer isso ai também depois-->
+            </div>
+            <div class="index-logado-bar"></div>
+            <button onclick="jogar()">Jogar</button>
+            <button>Estatísticas</button>
+            <button onclick="mostrarModalInfo()">Como jogar</button>
+            <button onclick="limparSessao()">Sair</button>
         </div>
-        <div>
-            <h2>Maior Pontuação: <span>0</span></h2> <!--Fazer isso ai também depois-->
+    </div>
+
+    <div id="modal-fim" style="display: none;" class="modal-info">
+        <div class="modal-content-info">
+            <h1>Como Jogar ?</h1>
+            <p>O jogo funciona da seguinte forma:
+                <br>
+                - Primeiro você escolhe um personagem e um fundo/cenário que será onde acontecerá o jogo;
+                <br>
+                - Após isso e clicar em "JOGAR" surgirá uma sequência de teclas na qual você terá que pressionar na
+                sequência correta;
+                <br>
+                - Cada sequência correta digitada irá aumentar a sua pontuação e sua sequência, sendo que quanto maior
+                for
+                sua sequência, mais pontos serão ganhos;
+                <br>
+                - Conforme acertos seguidos de sequência a barra de "GOLPE ESPECIAL" irá ficar cada vez mais visível até
+                que ela
+                possa ser usada pressionando a tecla espaço, cada personagem possui o seu golpe especial e ele, além do
+                efeito visual,
+                também aumenta bastante a pontuação do usuário;
+                <br>
+                - Tudo isso antes do tempo limite de 15 segundos acabar, cada acerto é recuperado 1.5 segundos
+                <br>
+                - O jogo acaba quando o tempo chegar em 0!
+                <br>
+                OBS: Cada personagem possui suas próprias animações e efeitos com mudanças apenas visuais.
+            </p>
+            <button onclick="fechar()">Entendi !</button>
         </div>
-        <div class="index-logado-bar"></div>
-        <button onclick="jogar()">Jogar</button>
-        <button>Estatísticas</button>
-        <button>Como jogar</button>
-        <button onclick="limparSessao()">Sair</button>
     </div>
 </body>
 
 <script>
     function jogar() {
         window.location.href = 'gameplay.html';
+    }
+
+    function mostrarModalInfo() {
+        var modal = document.getElementById('modal-fim');
+        modal.style.display = 'flex';
+    }
+
+    function fechar() {
+        var modal = document.getElementById('modal-fim');
+        modal.style.display = 'none';
     }
 </script>

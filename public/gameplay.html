@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/scripts/sessao.js"></script>
     <link rel="shortcut icon" href="assets/img/logo-2.png" type="image/x-icon">
     <link rel="stylesheet" href="style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +16,7 @@
     <title>Fighter ID!</title>
 </head>
 
-<body id="background-gameplay">
+<body onload="validarSessao()" id="background-gameplay">
     <div class="select-character-background">
         <div class="gameplay-select-character">
             <div class="gameplay-content-character" id="bg_selected">
