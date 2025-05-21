@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.get("/pegarMaiorPontuacao", function (req, res) {
+    usuarioController.pegarMaiorPontuacao(req, res);
+})
+
 module.exports = router;

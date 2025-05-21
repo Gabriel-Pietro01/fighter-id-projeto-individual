@@ -17,9 +17,29 @@ function validarSessao() {
     if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
         img_usuario.style.backgroundImage = `url(${icons[fotoPerfil]})`;
+        pegarMaiorPontuacao();
     } else {
         window.location = "login.html";
     }
+}
+
+function pegarMaiorPontuacao() {
+    var span_maior_pontuacao = document.getElementById('span_maior_pontuacao');
+
+    fetch("/usuarios/pegarMaiorPontuacao", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            if (resposta.ok) {
+                span_maior_pontuacao.innerHTML = resposta;
+            } else {
+                span_maior_pontuacao.innerHTML = '0';
+            }
+        })
 }
 
 function limparSessao() {

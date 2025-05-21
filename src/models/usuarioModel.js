@@ -22,7 +22,18 @@ function cadastrar(nome, email, senha, fotoPerfil) {
     return database.executar(instrucaoSql);
 }
 
+function pegarMaiorPontuacao(idUsuario) {
+    console.log("PASSEI AQUI!");
+
+    var instrucaoSql = `
+        SELECT max(pontuacaoTotal) FROM partidas WHERE fkUsuario = ${idUsuario};
+    `;
+    console.log('Excutando a instrução SQL \n' + instrucaoSql);
+    return database.executar(instrucaoSql)
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    pegarMaiorPontuacao
 };

@@ -209,14 +209,14 @@ function começarJogo() {
 function clicouTeclado(e) {
     if (especial) {
         especialDiv.style.opacity = '1';
-        especialDiv.style.scale = '1.1';
+        especialDiv.style.scale = '1.2';
         pressioneEspacoDiv.style.animation = 'changeColors 3s infinite';
 
         if (e.keyCode == 32) {
             char.style.backgroundImage = `url(${especialGifs[current]})`;
             filtroAzul.style.background = 'rgba(0, 0, 0, 0.8)';
-            tempoRestante += 5;
-            score += score * 2;
+            tempoRestante += 3;
+            score += score;
 
             especial = false;
         }
@@ -232,6 +232,7 @@ function clicouTeclado(e) {
         contKey++;
     } else if (e.keyCode != 32) {
         especialDiv.style.opacity = '0.5';
+        especialDiv.style.scale = '1.0';
         pressioneEspacoDiv.style.animation = 'none'
         filtroAzul.style.background = 'transparent';
         erros++;
@@ -249,13 +250,14 @@ function clicouTeclado(e) {
 
     if (contKey == 4) {
         especialDiv.style.opacity = '0.5';
+        especialDiv.style.scale = '1.0';
         pressioneEspacoDiv.style.animation = 'none';
         filtroAzul.style.background = 'transparent';
         tempoRestante += 1.50;
         sequencia++;
         score += sequencia * 25;
 
-        if (sequencia % 2 == 0) especial = true
+        if (sequencia % 15 == 0) especial = true
 
         if (sequencia > maiorSequencia) maiorSequencia = sequencia;
 
