@@ -128,6 +128,8 @@ var missedGifs = ['assets/gifs/combos/ryu-miss.gif', 'assets/gifs/combos/ken-mis
 
 var especialGifs = ['assets/gifs/especiais/ryu-hurricane.gif', 'assets/gifs/especiais/ken-especial.gif', 'assets/gifs/especiais/chun-especial.gif', '', 'assets/gifs/especiais/badass-akuma.gif'] //Colocar do zangief
 
+var filtroAzul = document.getElementById('filtro-azul');
+
 var score = 0;
 var scoreDiv = document.getElementById('score-span');
 var sequencia = 0;
@@ -207,11 +209,12 @@ function começarJogo() {
 function clicouTeclado(e) {
     if (especial) {
         especialDiv.style.opacity = '1';
-        pressioneEspacoDiv.style.animation = 'changeColors 3s infinite'
-        // Trocar a cor do fundo para combinar
+        especialDiv.style.scale = '1.1';
+        pressioneEspacoDiv.style.animation = 'changeColors 3s infinite';
 
         if (e.keyCode == 32) {
             char.style.backgroundImage = `url(${especialGifs[current]})`;
+            filtroAzul.style.background = 'rgba(0, 0, 0, 0.8)';
             tempoRestante += 5;
             score += score * 2;
 
@@ -230,6 +233,7 @@ function clicouTeclado(e) {
     } else if (e.keyCode != 32) {
         especialDiv.style.opacity = '0.5';
         pressioneEspacoDiv.style.animation = 'none'
+        filtroAzul.style.background = 'transparent';
         erros++;
         char.style.backgroundImage = `url(${missedGifs[current]})`;
         key1Combo.style.color = '#FFFFFF';
@@ -245,7 +249,8 @@ function clicouTeclado(e) {
 
     if (contKey == 4) {
         especialDiv.style.opacity = '0.5';
-        pressioneEspacoDiv.style.animation = 'none'
+        pressioneEspacoDiv.style.animation = 'none';
+        filtroAzul.style.background = 'transparent';
         tempoRestante += 1.50;
         sequencia++;
         score += sequencia * 25;

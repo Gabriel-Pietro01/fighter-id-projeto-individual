@@ -44,42 +44,45 @@
 
     <div class="overlay-temp">
         <h1 id="contagem-temp">3</h1>
-        <div class="content-gameplay">
-            <div class="div-timer">
-                <h4 id="timer">4.59</h4>
-            </div>
-            <div class="combo">
-                <span id="key-1">A</span>
-                +
-                <span id="key-2">A</span>
-                +
-                <span id="key-3">D</span>
-                +
-                <span id="key-4">L</span>
-            </div>
+        <div id="filtro-azul">
+            <div class="content-gameplay">
+                <div class="div-timer">
+                    <h4 id="timer">4.59</h4>
+                </div>
+                <div class="combo">
+                    <span id="key-1">A</span>
+                    +
+                    <span id="key-2">A</span>
+                    +
+                    <span id="key-3">D</span>
+                    +
+                    <span id="key-4">L</span>
+                </div>
 
-            <div id="score"><span id="score-span">0</span><span id="sequencia-span">x0</span></div>
+                <div id="score"><span id="score-span">0</span><span id="sequencia-span">x0</span></div>
 
-            <div class="char-combo-div">
-                <div id="char-combo"></div>
+                <div class="char-combo-div">
+                    <div id="char-combo"></div>
+                </div>
+
+                <div class="special-bar" id="special-bar">
+                    <p id="pressione-espaco">Pressione a Barra de Espaço</p>
+                    <img src="assets/img/spacebar-icon.png" alt="special-bar">
+                </div>
             </div>
+        </div>
 
-            <div class="special-bar" id="special-bar">
-                <p id="pressione-espaco">Pressione a Barra de Espaço</p>
-                <img src="assets/img/spacebar-icon.png" alt="special-bar">
+        <div id="modal-fim" style="display: none;" class="modal-fim">
+            <div class="modal-content">
+                <h1>Tempo Esgotado!</h1>
+                <p>Pontuação: <span id="pontuacao-final">0</span></p>
+                <p>Maior Sequência: <span id="sequencia-final">0</span></p>
+                <button onclick="jogarNovamente()">Jogar Novamente</button>
+                <button onclick="voltarInicio()">Voltar ao Início</button>
             </div>
         </div>
     </div>
 
-    <div id="modal-fim" style="display: none;" class="modal-fim">
-        <div class="modal-content">
-            <h1>Tempo Esgotado!</h1>
-            <p>Pontuação: <span id="pontuacao-final">0</span></p>
-            <p>Maior Sequência: <span id="sequencia-final">0</span></p>
-            <button onclick="jogarNovamente()">Jogar Novamente</button>
-            <button onclick="voltarInicio()">Voltar ao Início</button>
-        </div>
-    </div>
 
 </body>
 <script src="assets/scripts/gameplay.js"></script>
