@@ -24,6 +24,7 @@ function validarSessao() {
 }
 
 function pegarMaiorPontuacao() {
+    var idVar = sessionStorage.getItem('ID_USUARIO');
     var span_maior_pontuacao = document.getElementById('span_maior_pontuacao');
 
     fetch("/usuarios/pegarMaiorPontuacao", {
