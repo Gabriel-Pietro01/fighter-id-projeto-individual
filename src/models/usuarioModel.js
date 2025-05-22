@@ -26,11 +26,11 @@ function pegarMaiorPontuacao(idUsuario) {
     console.log("PASSEI AQUI!");
 
     var instrucaoSql = `
-        SELECT max(pontuacaoTotal) FROM partidas JOIN usuario 
+        SELECT max(pontuacaoTotal) as maiorPontuacao FROM partidas JOIN usuario 
 	        ON fkUsuario = id
                 WHERE id = ${idUsuario};
     `;
-    console.log('Excutando a instrução SQL \n' + instrucaoSql);
+    console.log('Executando a instrução SQL \n' + instrucaoSql);
     return database.executar(instrucaoSql)
 }
 

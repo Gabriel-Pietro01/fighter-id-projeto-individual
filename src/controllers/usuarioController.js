@@ -82,7 +82,7 @@ function cadastrar(req, res) {
 }
 
 function pegarMaiorPontuacao(req, res) {
-    var idUsuario = req.body.idUsuarioServer;
+    var idUsuario = req.params.id;
 
     usuarioModel.pegarMaiorPontuacao(idUsuario)
         .then(

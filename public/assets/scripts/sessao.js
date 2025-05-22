@@ -27,7 +27,7 @@ function pegarMaiorPontuacao() {
     var idVar = sessionStorage.getItem('ID_USUARIO');
     var span_maior_pontuacao = document.getElementById('span_maior_pontuacao');
 
-    fetch("/usuarios/pegarMaiorPontuacao", {
+    fetch(`/usuarios/pegarMaiorPontuacao/${idVar}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -36,11 +36,24 @@ function pegarMaiorPontuacao() {
         .then(function (resposta) {
             console.log("resposta: ", resposta);
             if (resposta.ok) {
-                span_maior_pontuacao.innerHTML = resposta;
+                return resposta.json();
+            } else {
+                throw new Error("Erro ao buscar maior pontuação");
+            }
+        })
+        .then(function (dados) {
+            console.log("Dados recebidos:", dados);
+
+            if (dados && dados.length > 0) {
+                span_maior_pontuacao.innerHTML = dados[0].maiorPontuacao;
             } else {
                 span_maior_pontuacao.innerHTML = '0';
             }
         })
+        .catch(function (erro) {
+            console.error("Erro na requisição:", erro);
+            span_maior_pontuacao.innerHTML = '0';
+        });
 }
 
 function limparSessao() {
