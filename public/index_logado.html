@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Fighter ID!</title>
 </head>
 
@@ -21,43 +22,13 @@
                 <h2 id="b_usuario"></h2>
             </div>
             <div>
-                <h2>Maior Pontuação: <span id="span_maior_pontuacao">0</span></h2> <!--Fazer isso ai também depois-->
+                <h2>Maior Pontuação: <span id="span_maior_pontuacao">0</span></h2>
             </div>
             <div class="index-logado-bar"></div>
             <button onclick="jogar()">Jogar</button>
             <button>Estatísticas</button>
             <button onclick="mostrarModalInfo()">Como jogar</button>
             <button onclick="limparSessao()">Sair</button>
-        </div>
-    </div>
-
-    <div id="modal-fim" style="display: none;" class="modal-info">
-        <div class="modal-content-info">
-            <h1>Como Jogar ?</h1>
-            <p>O jogo funciona da seguinte forma:
-                <br>
-                - Primeiro você escolhe um personagem e um fundo/cenário que será onde acontecerá o jogo;
-                <br>
-                - Após isso e clicar em "JOGAR" surgirá uma sequência de teclas na qual você terá que pressionar na
-                sequência correta;
-                <br>
-                - Cada sequência correta digitada irá aumentar a sua pontuação e sua sequência, sendo que quanto maior
-                for
-                sua sequência, mais pontos serão ganhos;
-                <br>
-                - Conforme acertos seguidos de sequência a barra de "GOLPE ESPECIAL" irá ficar cada vez mais visível até
-                que ela
-                possa ser usada pressionando a tecla espaço, cada personagem possui o seu golpe especial e ele, além do
-                efeito visual,
-                também aumenta bastante a pontuação do usuário;
-                <br>
-                - Tudo isso antes do tempo limite de 15 segundos acabar, cada acerto é recuperado 1.5 segundos
-                <br>
-                - O jogo acaba quando o tempo chegar em 0!
-                <br>
-                OBS: Cada personagem possui suas próprias animações e efeitos com mudanças apenas visuais.
-            </p>
-            <button onclick="fechar()">Entendi !</button>
         </div>
     </div>
 </body>
@@ -67,8 +38,15 @@
     }
 
     function mostrarModalInfo() {
-        var modal = document.getElementById('modal-fim');
-        modal.style.display = 'flex';
+        Swal.fire({
+            title: "Como o jogo funciona ?",
+            text: "O jogo consiste em você apertar a sequência de 4 teclas que aparecerá na tela na ordem correta antes do tempo limite de 10 segundos acabar. A cada acerto sua sequência aumenta e consequentemente sua pontuação também, a cada 15 sequências acertadas seguidas pode-se utilizar um ataque especial, que lhe garante um bônus de mais pontos e tempo.",
+            background: "#1D1D1D",
+            fontFamily: "Outfit",
+            color: "#FFFFFF",
+            confirmButtonText: "Entendi !",
+            confirmButtonColor: "#E63946"
+        });
     }
 
     function fechar() {

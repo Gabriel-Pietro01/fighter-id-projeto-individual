@@ -10,14 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Fighter ID!</title>
 </head>
 
 <body>
     <div class="register-content">
         <div class="register-left" id="register-left-login">
-            <a href="index.html"><button><img src="assets/img/icon-back-white-1.png"
-                        alt="icon-back"></button></a>
+            <a href="index.html"><button><img src="assets/img/icon-back-white-1.png" alt="icon-back"></button></a>
         </div>
 
         <div class="register-right">
@@ -44,7 +44,14 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == '' || senhaVar == '') {
-            alert('(Mensagem de erro para todos os campos em branco)');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Parece que algum campo ficou em branco, por favor preencha corretamente todos.",
+                background: "#1D1D1D",
+                color: "#FFFFFF",
+                confirmButtonColor: "#E63946",
+            });
             return false;
         }
 
@@ -74,7 +81,15 @@
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.FOTO_USUARIO = json.fotoPerfil;
 
-                    alert('Login efetuado com sucesso');
+                    Swal.fire({
+                        icon: "correct",
+                        title: "Login efetuado com sucesso!",
+                        background: "#1D1D1D",
+                        color: "#FFFFFF",
+                        timer: 1000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    });
 
                     setTimeout(function () {
                         window.location = "./index_logado.html";
@@ -84,7 +99,14 @@
 
             } else {
 
-                alert("Houve um erro ao tentar realizar o login!");
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Erro ao realizar login, tente novamente.",
+                    background: "#1D1D1D",
+                    color: "#FFFFFF",
+                    confirmButtonColor: "#E63946"
+                });
 
                 resposta.text().then(texto => {
                     console.error(texto);
