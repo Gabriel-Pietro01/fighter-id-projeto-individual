@@ -1,0 +1,137 @@
+body {
+    font-family: "Outfit";
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1D1D1D;
+    color: #F1FAEE;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 14vh;
+    padding: 20px;
+    gap: 40px;
+    background-color: #181818;
+    border-bottom: 2px solid #E63946;
+}
+
+header #foto-perfil {
+    height: 18vh;
+    width: 18vh;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.barra-separa {
+    height: 80%;
+    width: 2px;
+    background-color: #E63946;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.header-content h3 {
+    height: 2vh;
+}
+
+.header-content span {
+    font-size: 20px;
+}
+
+main {
+    height: 79vh;
+    padding-top: 0.5%;
+    padding-left: 5%;
+}
+
+.placar-lideres {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 76vh;
+    width: 70vh;
+    background-color: #161616;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.scroll-area {
+    height: 100%;
+    width: 100%;
+    background-color: #212121;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.scroll-area::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+hr {
+    width: 100%;
+    border-color: #000000;
+    border-style: solid;
+}
+
+.content-leader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-leader .posicao {
+    width: 40px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.foto-perfil-leader {
+    height: 8vh;
+    width: 8vh;
+    border-radius: 50%;
+    background-color: #000000;
+    margin: 0 20px;
+    flex-shrink: 0;
+}
+
+.content-leader .nome {
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.content-leader .pontuacao {
+    width: 80px;
+    text-align: right;
+    flex-shrink: 0;
+}
