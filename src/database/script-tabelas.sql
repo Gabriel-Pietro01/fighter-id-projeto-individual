@@ -54,3 +54,8 @@ INSERT INTO personagem VALUES
 -- SELECTS
 SELECT * FROM personagem;
 SELECT * FROM partidas JOIN usuario ON fkUsuario = id JOIN personagem ON fkPersonagem = idPersonagem;
+SELECT fotoPerfil as fotoPerfil, nome as nomeUsuario, MAX(pontuacaoTotal) as maiorPontuacao 
+	FROM usuario JOIN partidas 
+					ON partidas.fkUsuario = usuario.id 
+                    GROUP BY fotoPerfil, nomeUsuario 
+                    ORDER BY maiorPontuacao DESC;

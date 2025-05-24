@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="assets/scripts/sessao.js"></script>
     <link rel="shortcut icon" href="assets/img/logo-2.png" type="image/x-icon">
+    <script src="assets/scripts/sessao.js"></script>
     <link rel="stylesheet" href="style/styleDash.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +14,7 @@
     <title>Fighter ID!</title>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <header>
         <div id="foto-perfil"></div>
         <h1 id="nome-usuario">Nome do Usuário</h1>
@@ -26,7 +27,7 @@
 
         <div class="header-content">
             <h3>Maior Sequência</h3>
-            <span id="maior-pontuacao">0</span>
+            <span id="maior-sequencia">0</span>
         </div>
 
         <div class="header-content">
@@ -51,9 +52,9 @@
                 <hr>
                 <div class="content-leader">
                     <h3 class="posicao">2</h2>
-                    <div class="foto-perfil-leader"></div>
-                    <h4 class="nome">Nome do Usuário</h4>
-                    <h3 class="pontuacao">9999</h3>
+                        <div class="foto-perfil-leader"></div>
+                        <h4 class="nome">Nome do Usuário</h4>
+                        <h3 class="pontuacao">9999</h3>
                 </div>
 
                 <hr>
@@ -126,3 +127,7 @@
 </body>
 
 </html>
+
+<script>
+    //colocar aqui script fetch de mostrar placar de lideres
+</script>
