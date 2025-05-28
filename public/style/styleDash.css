@@ -72,7 +72,7 @@ main {
 .scroll-area {
     height: 100%;
     width: 100%;
-    background-color: #212121;
+    background-color: #141414;
     border: 2px solid #000000;
     border-radius: 5px;
     overflow-y: auto;
@@ -116,10 +116,9 @@ hr {
 }
 
 .foto-perfil-leader {
-    height: 8vh;
-    width: 8vh;
+    height: 12vh;
+    width: 12vh;
     border-radius: 50%;
-    background-color: #000000;
     margin: 0 20px;
     flex-shrink: 0;
 }

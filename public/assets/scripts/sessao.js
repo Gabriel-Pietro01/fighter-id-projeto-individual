@@ -26,6 +26,7 @@ function validarSessao() {
             nomeUserEstatistica.innerHTML = nome;
             imgUserEstatistica.style.backgroundImage = `url(${icons[fotoPerfil]})`;
             estatisticasGerais();
+            placarLideres();
         }
     } else {
         window.location = "login.html";
@@ -97,6 +98,73 @@ function estatisticasGerais() {
                 span_maior_sequencia.innerHTML = '0';
                 span_qtd_partidas.innerHTML = '0';
             }
+        })
+        .catch(function (erro) {
+            console.error("Erro na requisição:", erro);
+        });
+}
+
+function placarLideres() {
+    var areaPlacar = document.getElementById('scroll-area')
+
+    fetch(`./estatisticas/placarLideres/`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            if (resposta.ok) {
+                return resposta.json();
+            } else {
+                throw new Error("Erro ao buscar placar de líderes");
+            }
+        })
+        .then(function (dados) {
+            console.log("Dados recebidos:", dados);
+
+            for (var i = 0; i < dados.length; i++) {
+                if (i == 0) {
+                    areaPlacar.innerHTML += `                
+                    <div class="content-leader">
+                        <h3 class="posicao" style="color: #FFD700">${i + 1}</h3>
+                        <div class="foto-perfil-leader" style="background-image: url(${icons[dados[i].fotoPerfil]}); background-size: cover; background-repeat: no-repeat;"></div>
+                        <h3 class="nome" style="color: #FFD700">${dados[i].nomeUsuario}</h3>
+                        <h3 class="pontuacao" style="color: #FFD700">${dados[i].maiorPontuacao}</h3>
+                    </div>
+                    <hr>`
+                } else if (i == 1) {
+                    areaPlacar.innerHTML += `                
+                    <div class="content-leader">
+                        <h3 class="posicao" style="color: 	#C0C0C0">${i + 1}</h3>
+                        <div class="foto-perfil-leader" style="background-image: url(${icons[dados[i].fotoPerfil]}); background-size: cover; background-repeat: no-repeat;"></div>
+                        <h3 class="nome" style="color: 	#C0C0C0">${dados[i].nomeUsuario}</h3>
+                        <h3 class="pontuacao" style="color: 	#C0C0C0">${dados[i].maiorPontuacao}</h3>
+                    </div>
+                    <hr>`
+                } else if (i == 2) {
+                    areaPlacar.innerHTML += `                
+                    <div class="content-leader">
+                        <h3 class="posicao" style="color: 	#F4A460">${i + 1}</h3>
+                        <div class="foto-perfil-leader" style="background-image: url(${icons[dados[i].fotoPerfil]}); background-size: cover; background-repeat: no-repeat;"></div>
+                        <h3 class="nome" style="color: 	#F4A460">${dados[i].nomeUsuario}</h3>
+                        <h3 class="pontuacao" style="color: 	#F4A460">${dados[i].maiorPontuacao}</h3>
+                    </div>
+                    <hr>`
+                } else {
+                    areaPlacar.innerHTML += `                
+                    <div class="content-leader">
+                        <h3 class="posicao">${i + 1}</h3>
+                        <div class="foto-perfil-leader" style="background-image: url(${icons[dados[i].fotoPerfil]}); background-size: cover; background-repeat: no-repeat;"></div>
+                        <h3 class="nome">${dados[i].nomeUsuario}</h3>
+                        <h3 class="pontuacao">${dados[i].maiorPontuacao}</h3>
+                    </div>
+                    <hr>`
+                }
+
+            }
+
         })
         .catch(function (erro) {
             console.error("Erro na requisição:", erro);

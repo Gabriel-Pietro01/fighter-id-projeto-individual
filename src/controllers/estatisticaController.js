@@ -20,7 +20,7 @@ function estatisticasGerais(req, res) {
         );
 }
 
-function placarLideres(res) {
+function placarLideres(req, res) {
     estatisticaModel.placarLideres()
         .then(
             function (resultado) {
