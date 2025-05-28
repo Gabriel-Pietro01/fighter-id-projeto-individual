@@ -26,7 +26,7 @@
             </div>
             <div class="index-logado-bar"></div>
             <button onclick="jogar()">Jogar</button>
-            <button>Estatísticas</button>
+            <button onclick="estatisticas()">Estatísticas</button>
             <button onclick="mostrarModalInfo()">Como jogar</button>
             <button onclick="limparSessao()">Sair</button>
         </div>
@@ -35,6 +35,10 @@
 <script>
     function jogar() {
         window.location.href = 'gameplay.html';
+    }
+
+    function estatisticas() {
+        window.location.href = 'estatisticas.html';
     }
 
     function mostrarModalInfo() {

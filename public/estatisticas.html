@@ -16,7 +16,8 @@
 
 <body onload="validarSessao()">
     <header>
-        <div id="foto-perfil"></div>
+
+        <div id="foto-perfil"> <button onclick="voltar()"> ⮌ </button></div>
         <h1 id="nome-usuario">Nome do Usuário</h1>
         <div class="barra-separa"></div>
 
@@ -34,7 +35,6 @@
             <h3>Quantidade de Partidas jogadas</h3>
             <span id="qtd-partidas">0</span>
         </div>
-
     </header>
 
     <main>
@@ -52,5 +52,7 @@
 </html>
 
 <script>
-    //colocar aqui script fetch de mostrar placar de lideres
+    function voltar() {
+        window.location.href = 'index_logado.html'
+    }
 </script>
