@@ -64,6 +64,7 @@ SELECT fotoPerfil as fotoPerfil, nome as nomeUsuario, MAX(pontuacaoTotal) as mai
                     GROUP BY fotoPerfil, nomeUsuario 
                     ORDER BY maiorPontuacao DESC;
                     
-SELECT pontuacaoTotal as pontuacaoTotal FROM partidas JOIN usuario ON fkUsuario
+SELECT pontuacaoTotal as pontuacaoTotal FROM partidas 
+					JOIN usuario ON 
                     
 			
