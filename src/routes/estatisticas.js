@@ -11,6 +11,10 @@ router.get("/ultimasPartidas/:id", function (req, res) {
     estatisticaController.ultimasPartidas(req, res);
 })
 
+router.get("/partidasCadaPersonagem/:id", function (req, res) {
+    estatisticaController.partidasCadaPersonagem(req, res);
+})
+
 router.get("/placarLideres", function (req, res) {
     estatisticaController.placarLideres(req, res);
 })

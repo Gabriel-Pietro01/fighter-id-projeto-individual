@@ -66,6 +66,11 @@ SELECT fotoPerfil as fotoPerfil, nome as nomeUsuario, MAX(pontuacaoTotal) as mai
                     
 SELECT pontuacaoTotal as pontuacaoTotal FROM partidas 
 					JOIN usuario ON partidas.fkUsuario = usuario.id
-						WHERE usuario.id = 3 ORDER BY partidas.dtPartida LIMIT 5;
+						WHERE usuario.id = 4 ORDER BY partidas.dtPartida DESC LIMIT 5;
+                        
+SELECT COUNT(idPartida) as quantidadePartidas, nomePersonagem FROM partidas 
+				JOIN usuario ON partidas.fkUsuario = usuario.id
+					JOIN personagem ON partidas.fkPersonagem = personagem.idPersonagem
+						WHERE usuario.id = 1 GROUP BY personagem.idPersonagem;
                     
 			

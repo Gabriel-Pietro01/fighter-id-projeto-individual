@@ -16,7 +16,7 @@
     <title>Fighter ID!</title>
 </head>
 
-<body onload="validarSessao(), ultimasPartidas()">
+<body onload="validarSessao(), ultimasPartidas(), partidasCadaPersonagem()">
     <header>
         <div id="foto-perfil"> <button onclick="voltar()"> <strong>⮌</strong> </button></div>
         <h1 id="nome-usuario">Nome do Usuário</h1>
@@ -84,150 +84,201 @@
             .then(function (dados) {
                 console.log("Dados recebidos:", dados);
 
-                if (dados && dados.length > 0) {
-                    var ctx = document.getElementById('grafico-1').getContext('2d');
-                    var graficoPontuacoes = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: ['Partida 1', 'Partida 2', 'Partida 3', 'Partida 4', 'Partida 5'],
-                            datasets: [{
-                                label: 'Pontuação',
-                                data: [dados[4].pontuacaoTotal, dados[3].pontuacaoTotal, dados[2].pontuacaoTotal, dados[1].pontuacaoTotal, dados[0].pontuacaoTotal],
-                                borderColor: 'blue',
-                                backgroundColor: 'lightblue',
-                                tension: 0.3,
-                                pointBackgroundColor: 'blue',
-                                pointRadius: 5
-                            }]
-                        },
-                        options: {
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    text: 'Pontuação das suas Últimas 5 Partidas',
+                var labels = [];
+                var pontuacoes = [];
+
+                for (var i = 0; i < 5; i++) {
+                    if (dados[dados.length - 1 - i]) {
+                        labels.push(`Partida ${i + 1}`);
+                        pontuacoes.push(dados[dados.length - 1 - i].pontuacaoTotal);
+                    } else {
+                        labels.push(`Partida ${i + 1}`);
+                        pontuacoes.push(0);
+                    }
+                }
+
+                var ctx = document.getElementById('grafico-1').getContext('2d');
+                var graficoPontuacoes = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Pontuação',
+                            data: pontuacoes,
+                            borderColor: 'blue',
+                            backgroundColor: 'lightblue',
+                            tension: 0.3,
+                            pointBackgroundColor: 'blue',
+                            pointRadius: 5
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Pontuação das suas Últimas 5 Partidas',
+                                font: {
+                                    family: 'Outfit',
+                                    size: 20
+                                },
+                                color: '#fff'
+                            },
+                            legend: {
+                                labels: {
                                     font: {
-                                        family: 'Outfit',
-                                        size: 20
+                                        family: 'Outfit'
                                     },
                                     color: '#fff'
-                                },
-                                legend: {
-                                    labels: {
-                                        font: {
-                                            family: 'Outfit'
-                                        },
-                                        color: '#fff'
-                                    }
-                                },
-                                datalabels: {
-                                    align: 'top',
-                                    anchor: 'end',
-                                    color: '#fff',
-                                    font: {
-                                        family: 'Outfit',
-                                        size: 14,
-                                        weight: 'bold'
-                                    },
-                                    formatter: function (value) {
-                                        return value;
-                                    }
                                 }
                             },
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
-                                    ticks: {
-                                        font: {
-                                            family: 'Outfit'
-                                        },
-                                        color: '#fff'
-                                    }
+                            datalabels: {
+                                align: 'top',
+                                anchor: 'end',
+                                color: '#fff',
+                                font: {
+                                    family: 'Outfit',
+                                    size: 14,
+                                    weight: 'bold'
                                 },
-                                y: {
-                                    beginAtZero: true,
-                                    ticks: {
-                                        font: {
-                                            family: 'Outfit'
-                                        },
-                                        color: '#fff'
-                                    }
+                                formatter: function (value) {
+                                    return value;
                                 }
                             }
                         },
-                        plugins: [ChartDataLabels]
-                    });
-                }
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                ticks: {
+                                    font: {
+                                        family: 'Outfit'
+                                    },
+                                    color: '#fff'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    font: {
+                                        family: 'Outfit'
+                                    },
+                                    color: '#fff'
+                                }
+                            }
+                        }
+                    },
+                    plugins: [ChartDataLabels]
+                });
             })
+
             .catch(function (erro) {
                 console.error("Erro na requisição:", erro);
             });
     }
 
-    //FAZER ROTA, CONTROLLER E MODEL PARA ESTE GRÁFICO
-    var ctx2 = document.getElementById('grafico-2');
-    var graficoPersonagens = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ['Ryu', 'Ken', 'Chun Li', 'Zangief', 'Akuma'],
-            datasets: [{
-                label: 'Partidas jogadas por Personagem',
-                data: [6, 3, 2, 1, 10],
-                backgroundColor: '#FF4500'
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Quantidade de Partidas suas jogadas por cada Personagem',
-                    font: {
-                        family: 'Outfit',
-                        size: 20
-                    },
-                    color: '#fff'
-                },
-                legend: {
-                    labels: {
-                        font: {
-                            family: 'Outfit'
-                        },
-                        color: '#fff'
-                    }
-                },
-                datalabels: {
-                    anchor: 'center',
-                    align: 'center',
-                    color: '#fff',
-                    font: {
-                        family: 'Outfit',
-                        weight: 'bold',
-                        size: 14
-                    }
-                }
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    ticks: {
-                        font: {
-                            family: 'Outfit'
-                        },
-                        color: '#fff'
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        font: {
-                            family: 'Outfit'
-                        },
-                        color: '#fff'
-                    }
-                }
+    function partidasCadaPersonagem() {
+        var idVar = sessionStorage.getItem('ID_USUARIO');
+
+        fetch(`./estatisticas/partidasCadaPersonagem/${idVar}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
             }
-        },
-        plugins: [ChartDataLabels]
-    });
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    throw new Error("Erro ao buscar suas partidas com cada personagem.");
+                }
+            })
+            .then(function (dados) {
+                var labels = [];
+                var quantidadePartidas = [];
+
+                for (var i = 0; i < dados.length; i++) {
+                    if (dados[i]) {
+                        labels.push(dados[i].nomePersonagem);
+                        quantidadePartidas.push(dados[i].quantidadePartidas);
+                    } else {
+                        labels.push('Não jogou nenhuma partida')
+                        quantidadePartidas.push(0);
+                    }
+                }
+                
+                var ctx2 = document.getElementById('grafico-2');
+                var graficoPersonagens = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Partidas jogadas por Personagem',
+                            data: quantidadePartidas,
+                            backgroundColor: '#FF4500'
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Quantidade de Partidas suas jogadas por cada Personagem',
+                                font: {
+                                    family: 'Outfit',
+                                    size: 20
+                                },
+                                color: '#fff'
+                            },
+                            legend: {
+                                labels: {
+                                    font: {
+                                        family: 'Outfit'
+                                    },
+                                    color: '#fff'
+                                }
+                            },
+                            datalabels: {
+                                anchor: 'center',
+                                align: 'center',
+                                color: '#fff',
+                                font: {
+                                    family: 'Outfit',
+                                    weight: 'bold',
+                                    size: 14
+                                }
+                            }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                ticks: {
+                                    font: {
+                                        family: 'Outfit'
+                                    },
+                                    color: '#fff'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    font: {
+                                        family: 'Outfit'
+                                    },
+                                    color: '#fff'
+                                }
+                            }
+                        }
+                    },
+                    plugins: [ChartDataLabels]
+                });
+            })
+    }
+
+
+
+
+
+
+
 </script>

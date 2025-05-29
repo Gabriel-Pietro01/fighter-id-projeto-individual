@@ -25,6 +25,19 @@ function ultimasPartidas(idUsuario) {
     return database.executar(instrucaoSql)
 }
 
+function partidasCadaPersonagem(idUsuario) {
+    console.log("PASSEI AQUI!");
+
+    var instrucaoSql = `
+        SELECT COUNT(idPartida) as quantidadePartidas, nomePersonagem FROM partidas 
+                        JOIN usuario ON partidas.fkUsuario = usuario.id
+                            JOIN personagem ON partidas.fkPersonagem = personagem.idPersonagem
+                                WHERE usuario.id = ${idUsuario} GROUP BY personagem.nomePersonagem;
+    `;
+    console.log('Executando a instrução SQL \n' + instrucaoSql);
+    return database.executar(instrucaoSql)
+}
+
 function placarLideres() {
     console.log("PASSEI AQUI!");
 
@@ -42,5 +55,6 @@ function placarLideres() {
 module.exports = {
     estatisticasGerais,
     ultimasPartidas,
+    partidasCadaPersonagem,
     placarLideres
 };
