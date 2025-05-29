@@ -7,6 +7,8 @@
     <script src="assets/scripts/sessao.js"></script>
     <link rel="shortcut icon" href="assets/img/logo-2.png" type="image/x-icon">
     <script src="assets/scripts/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <link rel="stylesheet" href="style/styleDash.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +19,7 @@
 <body onload="validarSessao()">
     <header>
 
-        <div id="foto-perfil"> <button onclick="voltar()"> ⮌ </button></div>
+        <div id="foto-perfil"> <button onclick="voltar()"> <strong>⮌</strong> </button></div>
         <h1 id="nome-usuario">Nome do Usuário</h1>
         <div class="barra-separa"></div>
 
@@ -41,11 +43,18 @@
         <section class="placar-lideres">
             <h2>Placar de Líderes por Pontuação</h2>
             <hr>
-            <div class="scroll-area" id="scroll-area">
+            <div class="scroll-area" id="scroll-area"></div>
+        </section>
 
+        <div class="graficos">
+            <div class="grafico">
+                <canvas id="grafico-1"></canvas>
             </div>
 
-        </section>
+            <div class="grafico">
+                <canvas id="grafico-2"></canvas>
+            </div>
+        </div>
     </main>
 </body>
 
@@ -55,4 +64,143 @@
     function voltar() {
         window.location.href = 'index_logado.html'
     }
+
+    var ctx = document.getElementById('grafico-1').getContext('2d');
+    var graficoPontuacoes = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Partida 1', 'Partida 2', 'Partida 3', 'Partida 4', 'Partida 5'],
+            datasets: [{
+                label: 'Pontuação',
+                data: [500, 700, 850, 600, 1300],
+                borderColor: 'blue',
+                backgroundColor: 'lightblue',
+                tension: 0.3,
+                pointBackgroundColor: 'blue',
+                pointRadius: 5
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Pontuação das suas Últimas 5 Partidas',
+                    font: {
+                        family: 'Outfit',
+                        size: 20
+                    },
+                    color: '#fff'
+                },
+                legend: {
+                    labels: {
+                        font: {
+                            family: 'Outfit'
+                        },
+                        color: '#fff'
+                    }
+                },
+                datalabels: {
+                    align: 'top',
+                    anchor: 'end',
+                    color: '#fff',
+                    font: {
+                        family: 'Outfit',
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    formatter: function (value) {
+                        return value;
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            family: 'Outfit'
+                        },
+                        color: '#fff'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            family: 'Outfit'
+                        },
+                        color: '#fff'
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+
+    var ctx2 = document.getElementById('grafico-2');
+    var graficoPersonagens = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Ryu', 'Ken', 'Chun Li', 'Zangief', 'Akuma'],
+            datasets: [{
+                label: 'Partidas jogadas por Personagem',
+                data: [6, 3, 2, 1, 10],
+                backgroundColor: '#FF4500'
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Quantidade de Partidas suas jogadas por cada Personagem',
+                    font: {
+                        family: 'Outfit',
+                        size: 20
+                    },
+                    color: '#fff'
+                },
+                legend: {
+                    labels: {
+                        font: {
+                            family: 'Outfit'
+                        },
+                        color: '#fff'
+                    }
+                },
+                datalabels: {
+                    anchor: 'center',
+                    align: 'center',
+                    color: '#fff',
+                    font: {
+                        family: 'Outfit',
+                        weight: 'bold',
+                        size: 14
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            family: 'Outfit'
+                        },
+                        color: '#fff'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            family: 'Outfit'
+                        },
+                        color: '#fff'
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
 </script>

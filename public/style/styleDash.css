@@ -2,9 +2,11 @@ body {
     font-family: "Outfit";
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
     width: 100%;
-    background-color: #1D1D1D;
+    background-image: url('../assets/img/background-select-1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #F1FAEE;
     overflow: hidden;
 }
@@ -66,6 +68,8 @@ header button:hover {
 }
 
 main {
+    display: flex;
+    flex-direction: row;
     height: 79vh;
     padding-top: 0.5%;
     padding-left: 5%;
@@ -87,7 +91,7 @@ main {
 .scroll-area {
     height: 100%;
     width: 100%;
-    background-color: #282828;
+    background-color: #111111;
     border-radius: 5px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -148,4 +152,27 @@ hr {
     width: 80px;
     text-align: right;
     flex-shrink: 0;
+}
+
+.graficos {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vh;
+    gap: 5px;
+}
+
+.grafico {
+    height: 37.5%;
+    width: 100%;
+    max-width: 800px;
+    margin-left: 5%;
+    border-radius: 20px;
+    background-color: #151515;
+}
+
+.grafico canvas {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
 }
