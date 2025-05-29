@@ -13,6 +13,18 @@ function estatisticasGerais(idUsuario) {
     return database.executar(instrucaoSql)
 }
 
+function ultimasPartidas(idUsuario) {
+    console.log("PASSEI AQUI!");
+
+    var instrucaoSql = `
+        SELECT pontuacaoTotal as pontuacaoTotal FROM partidas 
+                            JOIN usuario ON partidas.fkUsuario = usuario.id
+                                WHERE usuario.id = ${idUsuario} ORDER BY partidas.dtPartida DESC LIMIT 5;
+    `;
+    console.log('Executando a instrução SQL \n' + instrucaoSql);
+    return database.executar(instrucaoSql)
+}
+
 function placarLideres() {
     console.log("PASSEI AQUI!");
 
@@ -29,5 +41,6 @@ function placarLideres() {
 
 module.exports = {
     estatisticasGerais,
+    ultimasPartidas,
     placarLideres
 };

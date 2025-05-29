@@ -7,7 +7,7 @@ router.get("/estatisticasGerais/:id", function (req, res) {
     estatisticaController.estatisticasGerais(req, res);
 })
 
-router.get("/ultimasPartidas/:id", function (req, res) { // CONTINUAR PARA PUXAR PARA A DASHBOARD E ESCREVER O COMANDO CERTO PARA COLOCAR NO BANCO
+router.get("/ultimasPartidas/:id", function (req, res) { 
     estatisticaController.ultimasPartidas(req, res);
 })
 
