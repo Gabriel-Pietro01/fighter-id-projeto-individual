@@ -18,11 +18,12 @@ function validarSessao() {
     var imgUserEstatistica = document.getElementById("foto-perfil");
 
     if (email != null && nome != null) {
-        if (window.location.href == 'http://localhost:3333/index_logado.html') {
+
+        try {
             b_usuario.innerHTML = nome;
             img_usuario.style.backgroundImage = `url(${icons[fotoPerfil]})`;
             pegarMaiorPontuacao();
-        } else if (window.location.href == 'http://localhost:3333/estatisticas.html') {
+        } catch {
             nomeUserEstatistica.innerHTML = nome;
             imgUserEstatistica.style.backgroundImage = `url(${icons[fotoPerfil]})`;
             estatisticasGerais();

@@ -52,10 +52,18 @@ INSERT INTO personagem VALUES
 	(default, 'Akuma');
     
 -- SELECTS
+SELECT * FROM usuario;
+
 SELECT * FROM personagem;
-SELECT * FROM partidas JOIN usuario ON fkUsuario = id JOIN personagem ON fkPersonagem = idPersonagem;
+
+SELECT * FROM partidas JOIN usuario ON fkUsuario = id JOIN personagem ON fkPersonagem = idPersonagem ORDER BY idPartida;
+
 SELECT fotoPerfil as fotoPerfil, nome as nomeUsuario, MAX(pontuacaoTotal) as maiorPontuacao 
 	FROM usuario JOIN partidas 
 					ON partidas.fkUsuario = usuario.id 
                     GROUP BY fotoPerfil, nomeUsuario 
                     ORDER BY maiorPontuacao DESC;
+                    
+SELECT pontuacaoTotal as pontuacaoTotal FROM partidas JOIN usuario ON fkUsuario
+                    
+			

@@ -7,6 +7,10 @@ router.get("/estatisticasGerais/:id", function (req, res) {
     estatisticaController.estatisticasGerais(req, res);
 })
 
+router.get("/ultimasPartidas/:id", function (req, res) { // CONTINUAR PARA PUXAR PARA A DASHBOARD
+    estatisticaController.ultimasPartidas(req, res);
+})
+
 router.get("/placarLideres", function (req, res) {
     estatisticaController.placarLideres(req, res);
 })

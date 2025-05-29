@@ -92,9 +92,9 @@ var divCombo = document.querySelector('.combo');
 var contKey = 0;
 
 var listKeybinds = [
-    'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+    'Q', 'W', 'E', 'R', 'T', 'Y', 'I', 'O', 'P',
     'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z',
-    'X', 'C', 'V', 'B', 'N', 'M'
+    'X', 'C', 'B', 'N', 'M'
 ]
 
 var comboGifs = [
