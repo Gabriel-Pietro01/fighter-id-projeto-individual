@@ -349,42 +349,45 @@ nav ul a:hover {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 80vh;
-    gap: 40px;
+    height: 83vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 20px;
+    border-top: 1px solid #353333;
     background-color: #141414;
 }
 
-.card-sobre {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 80%;
-    width: 25%;
-    border-radius: 20px;
-    background-color: #0e0d0d;
-    border: 1px solid #353333;
+.text-sobre,
+.img-sobre {
+    height: 90%;
+    width: 50%;
 }
 
-.card-sobre-content {
-    width: 90%;
-    text-align: center;
+.text-sobre p,
+button {
+    margin-left: 5%;
 }
 
-.card-sobre:hover {
-    scale: 1.05;
-    border-color: #615d5d;
+.text-sobre button {
+    font-family: 'Outfit';
+    font-size: 16px;
+    height: 5vh;
+    width: 20vh;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+}
+
+.text-sobre button:hover {
     transition: all 0.2s ease;
+    scale: 1.05;
+    background-color: #E63946;
+    color: white;
 }
 
-.card-sobre img {
-    height: 50%;
-    width: 60%;
-}
-
-.card-sobre-barra {
-    height: 2px;
-    width: 90%;
-    background-color: #ffffff;
+.button-sobre-ative {
+    background-color: #E63946;
+    color: white;
 }
 
 /* ----------------------- */
