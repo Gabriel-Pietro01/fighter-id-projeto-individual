@@ -126,8 +126,8 @@
             <button class="button-sobre-ative" onclick="sobremim()" id="btn-sobremim">Sobre mim</button>
             <button onclick="sobresite()" id="btn-sobresite">Sobre o site</button>
         </div>
-        <div class="img-sobre">
-            <!--COLOCAR FOTO-->
+        <div class="img-sobre" id="img-sobre">
+            <img src="assets/img/foto-sobremim.jpg" alt="">
         </div>
     </div>
 
@@ -145,6 +145,7 @@
     function sobremim() {
         var conteudoSobreMim = document.getElementById('p-sobre');
         var h1Sobre = document.getElementById('h1-sobre');
+        var imgSobreMim = document.getElementById('img-sobre');
         var btnSobreMim = document.getElementById('btn-sobremim');
         var btnSobreSite = document.getElementById('btn-sobresite');
 
@@ -174,11 +175,14 @@
                 criar este site para compartilhar minha paixão e ajudar novos jogadores a se conectarem com esse
                 universo.
         `;
+
+        imgSobreMim.innerHTML = `<img src="assets/img/foto-sobremim.jpg" alt="img-sobre">`;
     }
 
     function sobresite() {
         var conteudoSobreSite = document.getElementById('p-sobre');
         var h1Sobre = document.getElementById('h1-sobre');
+        var imgSobre = document.getElementById('img-sobre');
         var btnSobreMim = document.getElementById('btn-sobremim');
         var btnSobreSite = document.getElementById('btn-sobresite');
 
@@ -202,5 +206,7 @@
                 Fighter ID busca unir todas as propostas abordadas e no final tem como finalidade juntar dois principais fatores:
                 Diversão e Engajamento (na franquia de Street Fighter).
         `;
+
+        imgSobre.innerHTML = `<img src="assets/img/logo-2-white.png" alt="img-sobre">`;
     }
 </script>

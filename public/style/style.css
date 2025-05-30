@@ -349,7 +349,7 @@ nav ul a:hover {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 83vh;
+    height: 98vh;
     padding-left: 20px;
     padding-right: 20px;
     gap: 20px;
@@ -363,11 +363,6 @@ nav ul a:hover {
     width: 50%;
 }
 
-.text-sobre p,
-button {
-    margin-left: 5%;
-}
-
 .text-sobre button {
     font-family: 'Outfit';
     font-size: 16px;
@@ -376,6 +371,10 @@ button {
     border-radius: 10px;
     border-style: none;
     cursor: pointer;
+}
+
+#p-sobre, #btn-sobremim, #btn-sobresite {
+    margin-left: 5%;
 }
 
 .text-sobre button:hover {
@@ -388,6 +387,19 @@ button {
 .button-sobre-ative {
     background-color: #E63946;
     color: white;
+}
+
+.img-sobre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-sobre img{
+    height: 100%;
+    width: 70%;
+    border-radius: 20px;
+    border: 4px solid white
 }
 
 /* ----------------------- */
