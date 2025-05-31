@@ -34,8 +34,22 @@ function pegarMaiorPontuacao(idUsuario) {
     return database.executar(instrucaoSql)
 }
 
+function atualizarDados(idUsuario, nome, email, fotoPerfil) {
+    console.log("PASSEI AQUI!");
+
+    var instrucaoSql = `
+        UPDATE usuario 
+	        SET nome = '${nome}', email = '${email}', fotoPerfil = ${fotoPerfil} 
+		        WHERE id = ${idUsuario};
+    `;
+    console.log('Executando a instrução SQL \n' + instrucaoSql);
+    return database.executar(instrucaoSql)
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
-    pegarMaiorPontuacao
+    pegarMaiorPontuacao,
+    atualizarDados
 };

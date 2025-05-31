@@ -14,16 +14,15 @@
     <title>Fighter ID!</title>
 </head>
 
-<body onload="validarSessao(), efeitoConfirmar()">
+<body onload="validarSessao(), efeitoConfirmar(),carregarDadosAtuais()">
     <div class="overlay">
         <div class="content-editar-ver">
             <nav>
                 <div class="img-usuario-logado"></div>
                 <h3 id="b_usuario"></h3>
                 <ul>
-                    <li><a href="" class="active">Editar Perfil</a></li>
-                    <li><a href="">Histórico de Partidas</a></li>
-                    <li><a href="">Voltar</a></li>
+                    <li><a href="editar.html" class="active">Editar Perfil</a></li>
+                    <li><a href="index_logado.html">Voltar</a></li>
                 </ul>
             </nav>
             <div class="barra-separa"></div>
@@ -32,11 +31,11 @@
                 <h1>Editar Perfil</h1>
                 <div class="content-edit-2">
                     <img src="../assets/img/back-character-register.png" onclick="changeIconBack()">
-                    <div class="character-register" data-id="1"></div>
+                    <div class="character-register" id="foto-user"></div>
                     <img src="../assets/img/forward-character-register.png" onclick="changeIconForward()">
-                    Nome de Usuário:<input type="text">
-                    Email:<input type="text">
-                    <button id="button-confirm">Confirmar Alterações</button>
+                    Nome de Usuário:<input type="text" id="nome-user">
+                    Email:<input type="text" id="email-user">
+                    <button id="button-confirm" onclick="confirmar()">Confirmar Alterações</button>
                 </div>
 
             </div>
@@ -44,6 +43,8 @@
     </div>
 </body>
 <script>
+    var currentFoto = sessionStorage.getItem('FOTO_USUARIO');
+
     function efeitoConfirmar() {
         var botaoConfirmar = document.getElementById('button-confirm');
 
@@ -54,5 +55,130 @@
         botaoConfirmar.addEventListener('mouseout', () => {
             botaoConfirmar.innerHTML = 'Confirmar Alterações';
         })
+    }
+
+    function carregarDadosAtuais() {
+        var icons = ['', 'assets/img/icons-player-profile/ryu-icon-1.jpg', 'assets/img/icons-player-profile/ryu-icon-2.jpg',
+            'assets/img/icons-player-profile/ken-icon-1.jpg', 'assets/img/icons-player-profile/ken-icon-2.jpg',
+            'assets/img/icons-player-profile/chun-li-icon-1.jpg', 'assets/img/icons-player-profile/chun-li-icon-2.jpg',
+            'assets/img/icons-player-profile/zangief-icon-1.jpg', 'assets/img/icons-player-profile/zangief-icon-2.jpg',
+            'assets/img/icons-player-profile/akuma-icon-1.jpg', 'assets/img/icons-player-profile/akuma-icon-2.jpg'
+        ];
+
+        var fotoAtual = sessionStorage.getItem('FOTO_USUARIO');
+        var fotoDiv = document.getElementById('foto-user');
+
+        var nomeAtual = sessionStorage.getItem('NOME_USUARIO');
+        var nomeInput = document.getElementById('nome-user');
+
+        var emailAtual = sessionStorage.getItem('EMAIL_USUARIO');
+        var emailInput = document.getElementById('email-user');
+
+        nomeInput.value = nomeAtual;
+        emailInput.value = emailAtual;
+        fotoDiv.style.backgroundImage = `url(${icons[fotoAtual]})`;
+        fotoDiv.setAttribute('data-id', fotoAtual)
+    }
+
+    function changeIconForward() {
+        var icons = ['', 'assets/img/icons-player-profile/ryu-icon-1.jpg', 'assets/img/icons-player-profile/ryu-icon-2.jpg',
+            'assets/img/icons-player-profile/ken-icon-1.jpg', 'assets/img/icons-player-profile/ken-icon-2.jpg',
+            'assets/img/icons-player-profile/chun-li-icon-1.jpg', 'assets/img/icons-player-profile/chun-li-icon-2.jpg',
+            'assets/img/icons-player-profile/zangief-icon-1.jpg', 'assets/img/icons-player-profile/zangief-icon-2.jpg',
+            'assets/img/icons-player-profile/akuma-icon-1.jpg', 'assets/img/icons-player-profile/akuma-icon-2.jpg'
+        ];
+
+        var fotoDiv = document.getElementById('foto-user');
+
+        if (currentFoto < icons.length - 1) {
+            currentFoto++;
+        } else {
+            currentFoto = 1;
+        }
+
+        fotoDiv.style.backgroundImage = `url(${icons[currentFoto]})`;
+    }
+
+    function changeIconBack() {
+        var icons = ['', 'assets/img/icons-player-profile/ryu-icon-1.jpg', 'assets/img/icons-player-profile/ryu-icon-2.jpg',
+            'assets/img/icons-player-profile/ken-icon-1.jpg', 'assets/img/icons-player-profile/ken-icon-2.jpg',
+            'assets/img/icons-player-profile/chun-li-icon-1.jpg', 'assets/img/icons-player-profile/chun-li-icon-2.jpg',
+            'assets/img/icons-player-profile/zangief-icon-1.jpg', 'assets/img/icons-player-profile/zangief-icon-2.jpg',
+            'assets/img/icons-player-profile/akuma-icon-1.jpg', 'assets/img/icons-player-profile/akuma-icon-2.jpg'
+        ];
+
+        var fotoDiv = document.getElementById('foto-user');
+
+        if (currentFoto == 1) {
+            currentFoto = 10;
+        } else {
+            currentFoto--;
+        }
+
+        fotoDiv.style.backgroundImage = `url(${icons[currentFoto]})`;
+    }
+
+    function confirmar() {
+        var idVar = sessionStorage.getItem('ID_USUARIO');
+        var fotoAtual = document.getElementById('foto-user');
+        var nomeInput = document.getElementById('nome-user').value;
+        var emailInput = document.getElementById('email-user').value;
+
+        if (
+            nomeInput == '' ||
+            emailInput == '' ||
+            !emailInput.includes('@')
+        ) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Parece que você preencheu incorretamente algum campo, por favor preencha corretamente todos.",
+                background: "#1D1D1D",
+                color: "#FFFFFF",
+                confirmButtonColor: "#E63946",
+            });
+            return false;
+        }
+
+        fetch(`/usuarios/atualizarDados/${idVar}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeInput,
+                emailServer: emailInput,
+                fotoPerfilServer: currentFoto
+            }),
+        })
+            .then(resposta => {
+                console.log("resposta: ", resposta);
+                if (!resposta.ok) {
+                    throw new Error("Houve um erro ao tentar realizar as alterações pedidas!");
+                }
+                return resposta.json();
+            })
+            .then(json => {
+                sessionStorage.setItem('EMAIL_USUARIO', `${emailInput}`);
+                sessionStorage.setItem('NOME_USUARIO', `${nomeInput}`);
+                sessionStorage.setItem('FOTO_USUARIO', `${currentFoto}`);
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Alteração feita com sucesso!",
+                    background: "#1D1D1D",
+                    color: "#FFFFFF",
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                });
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000)
+            })
+            .catch(erro => {
+                console.log(`#ERRO: ${erro}`);
+            });
     }
 </script>

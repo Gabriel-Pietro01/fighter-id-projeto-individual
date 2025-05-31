@@ -101,8 +101,34 @@ function pegarMaiorPontuacao(req, res) {
         );
 }
 
+function atualizarDados(req, res) {
+    var idUsuario = req.params.id;
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var fotoPerfil = req.body.fotoPerfilServer;
+
+    usuarioModel.atualizarDados(idUsuario, nome, email, fotoPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao tentar atualizar seu perfil! Erro:",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+
+
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    pegarMaiorPontuacao
+    pegarMaiorPontuacao,
+    atualizarDados
 }
