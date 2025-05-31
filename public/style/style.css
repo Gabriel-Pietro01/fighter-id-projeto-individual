@@ -373,7 +373,9 @@ nav ul a:hover {
     cursor: pointer;
 }
 
-#p-sobre, #btn-sobremim, #btn-sobresite {
+#p-sobre,
+#btn-sobremim,
+#btn-sobresite {
     margin-left: 5%;
 }
 
@@ -395,7 +397,7 @@ nav ul a:hover {
     align-items: center;
 }
 
-.img-sobre img{
+.img-sobre img {
     height: 100%;
     width: 70%;
     border-radius: 20px;
@@ -611,6 +613,23 @@ footer img {
     border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;
+    border: 2px solid #000000;
+}
+
+#div-editar {
+    height: 5vh;
+    width: 5vh;
+    border-radius: 25px;
+    background-color: #F3722C;
+    font-size: 24px;
+    border: 2px solid #000000;
+    cursor: pointer;
+}
+
+#div-editar:hover {
+    scale: 1.1;
+    background-color: #F3722C;
+    font-size: 24px;
     border: 2px solid #000000;
 }
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/scripts/sessao.js"></script>
+    <link rel="shortcut icon" href="assets/img/logo-2.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/styleEditar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Fighter ID!</title>
+</head>
+
+<body onload="validarSessao(), efeitoConfirmar()">
+    <div class="overlay">
+        <div class="content-editar-ver">
+            <nav>
+                <div class="img-usuario-logado"></div>
+                <h3 id="b_usuario"></h3>
+                <ul>
+                    <li><a href="" class="active">Editar Perfil</a></li>
+                    <li><a href="">Histórico de Partidas</a></li>
+                    <li><a href="">Voltar</a></li>
+                </ul>
+            </nav>
+            <div class="barra-separa"></div>
+
+            <div class="content-edit">
+                <h1>Editar Perfil</h1>
+                <div class="content-edit-2">
+                    <img src="../assets/img/back-character-register.png" onclick="changeIconBack()">
+                    <div class="character-register" data-id="1"></div>
+                    <img src="../assets/img/forward-character-register.png" onclick="changeIconForward()">
+                    Nome de Usuário:<input type="text">
+                    Email:<input type="text">
+                    <button id="button-confirm">Confirmar Alterações</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function efeitoConfirmar() {
+        var botaoConfirmar = document.getElementById('button-confirm');
+
+        botaoConfirmar.addEventListener('mouseover', () => {
+            botaoConfirmar.innerHTML = '✔️';
+        })
+
+        botaoConfirmar.addEventListener('mouseout', () => {
+            botaoConfirmar.innerHTML = 'Confirmar Alterações';
+        })
+    }
+</script>

@@ -17,8 +17,10 @@
 <body onload="validarSessao()" id="lobby">
     <div class="overlay">
         <div class="content-index-logado">
-            <div id="img_usuario" class="img-usuario-logado"></div>
-            <div>
+            <div id="img_usuario" class="img-usuario-logado">
+                <div id="div-editar" onclick="verPerfil()">✎</div>
+            </div>
+            <div class="topo-usuario-logado">
                 <h2 id="b_usuario"></h2>
             </div>
             <div>
@@ -51,6 +53,10 @@
             confirmButtonText: "Entendi !",
             confirmButtonColor: "#E63946"
         });
+    }
+
+    function verPerfil() {
+        window.location.href = 'editar.html';
     }
 
     function fechar() {

@@ -18,7 +18,6 @@ function validarSessao() {
     var imgUserEstatistica = document.getElementById("foto-perfil");
 
     if (email != null && nome != null) {
-
         try {
             b_usuario.innerHTML = nome;
             img_usuario.style.backgroundImage = `url(${icons[fotoPerfil]})`;
