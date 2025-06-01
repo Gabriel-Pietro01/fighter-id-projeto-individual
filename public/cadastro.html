@@ -36,11 +36,11 @@
             </div>
 
             <div class="campo-registro">
-                <input id="input_senha" type="text" placeholder="Senha">
+                <input id="input_senha" type="password" placeholder="Senha">
             </div>
 
             <div class="campo-registro">
-                <input id="confirmacao_senha_input" type="text" placeholder="Confirmar Senha">
+                <input id="confirmacao_senha_input" type="password" placeholder="Confirmar Senha">
             </div>
 
             <div class="end-register">
@@ -64,12 +64,14 @@
             nomeVar == '' ||
             emailVar == '' ||
             senhaVar == '' ||
-            confirmacaoSenhaVar == ''
+            confirmacaoSenhaVar == '' ||
+            !emailVar.includes('@') ||
+            !emailVar.includes('.com')
         ) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Parece que algum campo ficou em branco, por favor preencha corretamente todos.",
+                text: "Parece que algum campo foi preenchido incorretamente, por favor preencha corretamente todos.",
                 background: "#1D1D1D",
                 color: "#FFFFFF",
                 confirmButtonColor: "#E63946",

@@ -379,6 +379,10 @@ nav ul a:hover {
     margin-left: 5%;
 }
 
+#p-sobre span {
+    color: #f3be2c;
+}
+
 .text-sobre button:hover {
     transition: all 0.2s ease;
     scale: 1.05;

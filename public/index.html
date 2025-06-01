@@ -103,25 +103,25 @@
         <div class="text-sobre">
             <h1 id="h1-sobre">Sobre Mim</h1>
             <p id="p-sobre">
-                Olá! Me chamo Gabriel, sou um jovem apaixonado por jogos, animes e esportes. Desde cedo fui apresentado
-                aos videogames e computadores pelo meu pai, o que me levou a mergulhar nesse mundo digital cheio de
+                Olá! Me chamo <span>Gabriel,</span> sou um jovem apaixonado por jogos, animes e esportes. Desde cedo fui apresentado
+                aos <span>videogames e computadores pelo meu pai,</span> o que me levou a mergulhar nesse mundo digital cheio de
                 fantasia, onde além da diversão, aprendi lições e valores que carrego até hoje.<br><br>
 
-                Meu primeiro contato com a franquia Street Fighter foi aos 3 anos, quando meu pai comprou um jogo na
+                Meu primeiro contato com a franquia <span>Street Fighter</span> foi aos 3 anos, quando meu pai comprou um jogo na
                 feira para o nosso PlayStation 2. A capa me chamou muito a atenção pelos detalhes, a fonte que parecia
                 estar em chamas, e os personagens com visual marcante — como um que usava uma boina, parecendo um
                 capitão. Quando perguntei do que se tratava, ele simplesmente colocou o jogo e, de repente, vi
-                personagens lutando, soltando poderes e fazendo acrobacias. A partir dali, um novo mundo se abriu para
+                personagens lutando, soltando poderes e fazendo acrobacias. A partir dali, <span>um novo mundo</span> se abriu para
                 mim. Jogávamos juntos quase todos os dias, e ainda pude viver um pouco da fase dos fliperamas, mesmo que
                 já estivessem em declínio.<br>
 
-                Street Fighter, junto de filmes de luta como Karatê Kid e os de Bruce Lee, teve grande impacto na minha
-                vida — me ensinando sobre resiliência, superação e evolução constante. Cheguei a praticar artes marciais
+                <span>Street Fighter,</span> junto de filmes de luta como Karatê Kid e os de Bruce Lee, teve grande impacto na minha
+                vida — me ensinando sobre <span>resiliência, superação e evolução constante.</span> Cheguei a praticar artes marciais
                 quando mais novo e hoje mantenho o hábito de cuidar do corpo na academia.<br><br>
 
                 Com todo esse carinho pela franquia e notando a dificuldade que muitos têm para começar na série, decidi
-                criar este site para compartilhar minha paixão e ajudar novos jogadores a se conectarem com esse
-                universo.
+                criar este site para <span>compartilhar minha paixão e ajudar novos jogadores a se conectarem com esse
+                universo.</span>
             </p>
             <button class="button-sobre-ative" onclick="sobremim()" id="btn-sobremim">Sobre mim</button>
             <button onclick="sobresite()" id="btn-sobresite">Sobre o site</button>
@@ -155,25 +155,25 @@
         h1Sobre.innerHTML = 'Sobre Mim';
 
         conteudoSobreMim.innerHTML = `
-                        Olá! Me chamo Gabriel, sou um jovem apaixonado por jogos, animes e esportes. Desde cedo fui apresentado
-                aos videogames e computadores pelo meu pai, o que me levou a mergulhar nesse mundo digital cheio de
+                Olá! Me chamo <span>Gabriel,</span> sou um jovem apaixonado por jogos, animes e esportes. Desde cedo fui apresentado
+                aos <span>videogames e computadores pelo meu pai,</span> o que me levou a mergulhar nesse mundo digital cheio de
                 fantasia, onde além da diversão, aprendi lições e valores que carrego até hoje.<br><br>
 
-                Meu primeiro contato com a franquia Street Fighter foi aos 3 anos, quando meu pai comprou um jogo na
+                Meu primeiro contato com a franquia <span>Street Fighter</span> foi aos 3 anos, quando meu pai comprou um jogo na
                 feira para o nosso PlayStation 2. A capa me chamou muito a atenção pelos detalhes, a fonte que parecia
                 estar em chamas, e os personagens com visual marcante — como um que usava uma boina, parecendo um
                 capitão. Quando perguntei do que se tratava, ele simplesmente colocou o jogo e, de repente, vi
-                personagens lutando, soltando poderes e fazendo acrobacias. A partir dali, um novo mundo se abriu para
+                personagens lutando, soltando poderes e fazendo acrobacias. A partir dali, <span>um novo mundo</span> se abriu para
                 mim. Jogávamos juntos quase todos os dias, e ainda pude viver um pouco da fase dos fliperamas, mesmo que
                 já estivessem em declínio.<br>
 
-                Street Fighter, junto de filmes de luta como Karatê Kid e os de Bruce Lee, teve grande impacto na minha
-                vida — me ensinando sobre resiliência, superação e evolução constante. Cheguei a praticar artes marciais
+                <span>Street Fighter,</span> junto de filmes de luta como Karatê Kid e os de Bruce Lee, teve grande impacto na minha
+                vida — me ensinando sobre <span>resiliência, superação e evolução constante.</span> Cheguei a praticar artes marciais
                 quando mais novo e hoje mantenho o hábito de cuidar do corpo na academia.<br><br>
 
                 Com todo esse carinho pela franquia e notando a dificuldade que muitos têm para começar na série, decidi
-                criar este site para compartilhar minha paixão e ajudar novos jogadores a se conectarem com esse
-                universo.
+                criar este site para <span>compartilhar minha paixão e ajudar novos jogadores a se conectarem com esse
+                universo.</span>
         `;
 
         imgSobreMim.innerHTML = `<img src="assets/img/foto-sobremim.jpg" alt="img-sobre">`;
@@ -182,7 +182,6 @@
     function sobresite() {
         var conteudoSobreSite = document.getElementById('p-sobre');
         var h1Sobre = document.getElementById('h1-sobre');
-        var imgSobre = document.getElementById('img-sobre');
         var btnSobreMim = document.getElementById('btn-sobremim');
         var btnSobreSite = document.getElementById('btn-sobresite');
 
@@ -192,21 +191,19 @@
         h1Sobre.innerHTML = 'Sobre o Site';
 
         conteudoSobreSite.innerHTML = `
-                O FighterID é um site/projeto desenvolvido por mim, Gabriel Pietro, aluno de Análise e Desenvolvimento de Sistemas
+                O <span>FighterID</span> é um site/projeto desenvolvido por mim, Gabriel Pietro, aluno de Análise e Desenvolvimento de Sistemas
                 da Faculdade SPTech.<br><br>
 
-                Como eu falei no sobre mim, a ideia do projeto vem em conjunto a minha paixão por jogos de luta, especificamente da franquia 
+                Como eu falei no sobre mim, a <span>ideia</span> do projeto vem em conjunto a minha <span>paixão por jogos de luta,</span> especificamente da franquia 
                 Street Fighter, em conjunto com a dificuldade de ingressar no mundo dos jogos de luta para novos jogadores, devido tanto a fatores
-                de acessibilidade (visto que não são todos que tem condições de jogar os últimos jogos de luta lançados), como também a barreira de dificuldade,
+                de acessibilidade (visto que não são todos que tem condições de jogar os últimos jogos de luta lançados), <span>como também a barreira de dificuldade,</span>
                 já que ao jogar online a chance de se frustar por jogar contra alguém que joga a franquia Street Fighter há anos é bem grande.<br><br>
-                O principal foco do site para quebrar esta barreira, é em seu jogo de combos, onde o usuário terá que pressionar determinadas
-                teclas em uma ordem e em um tempo estimado, cada acerto aumenta sua pontuação.<br><br>
-                Além de poder jogar e interagir pelo site, o usuário poderá ver suas estatísticas e maiores 
-                pontuações de combos dele e dos demais usuários através de Dashboards intuitivas!<br><br>
+                O principal foco do site para quebrar esta barreira, é em seu <span>jogo de combos, onde o usuário terá que pressionar determinadas
+                teclas em uma ordem e em um tempo estimado, cada acerto aumenta sua pontuação.</span><br><br>
+                Além de poder jogar e interagir pelo site, o usuário poderá ver suas <span>estatísticas</span> e maiores 
+                pontuações de combos dele e dos demais usuários através de <span>Dashboards intuitivas!</span><br><br>
                 Fighter ID busca unir todas as propostas abordadas e no final tem como finalidade juntar dois principais fatores:
-                Diversão e Engajamento (na franquia de Street Fighter).
+                <span>Diversão e Engajamento (na franquia de Street Fighter).</span>
         `;
-
-        imgSobre.innerHTML = `<img src="assets/img/logo-2-white.png" alt="img-sobre">`;
     }
 </script>
