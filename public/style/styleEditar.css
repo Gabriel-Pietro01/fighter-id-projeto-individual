@@ -31,7 +31,9 @@ body {
     flex-direction: row;
     height: 80vh;
     width: 100%;
-    background-color: #141414;
+    background-image: url(../assets/img/background-select-1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     border: 2px solid #333131;
 }
 
@@ -54,6 +56,7 @@ nav {
     text-align: center;
     height: 100%;
     width: 40vh;
+    background-color: #0c0c0c;
 }
 
 nav h3 {
